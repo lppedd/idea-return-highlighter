@@ -1,0 +1,12 @@
+<idea-plugin>
+	<id>com.github.lppedd.idea-return-highlighter</id>
+	<name>Return Highlighter</name>
+	<vendor email="lp.edoardo@gmail.com"
+	        url="https://github.com/lppedd/idea-return-highlighter">
+		Edoardo Luppi
+	</vendor>
+
+	<depends>com.intellij.modules.platform</depends>
+	<depends optional="true" config-file="java.xml">com.intellij.java</depends>
+	<depends optional="true" config-file="javascript.xml">JavaScript</depends>
+</idea-plugin>

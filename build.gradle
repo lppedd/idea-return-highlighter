@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.12'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+}
+
+group 'com.github.lppedd'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    testCompile 'junit:junit:4.12'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version 'IU-192.7142.36'
+    downloadSources true
+    plugins = ['java', 'JavaScriptLanguage']
+}
+
+patchPluginXml {
+    version project.version
+    sinceBuild '192'
+    untilBuild '193.*'
+    pluginDescription = new File('plugin-description.html').getText('UTF-8')
+    changeNotes = new File("change-notes/${version.replace('.', '_')}").getText('UTF-8')
+}

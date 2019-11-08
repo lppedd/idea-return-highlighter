@@ -1,0 +1,12 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.intellij">
+		<codeInsight.lineMarkerProvider
+				language="JavaScript"
+				implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnLineMarkerProvider"
+		/>
+		<annotator
+				language="JavaScript"
+				implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnAnnotator"
+		/>
+	</extensions>
+</idea-plugin>

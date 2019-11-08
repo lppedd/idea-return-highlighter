@@ -1,0 +1,9 @@
+0.1.0 (09/11/2019)
+
+Initial alpha release.<br />
+Supports
+
+ - Gutter icon
+ - Custom background color (non customizable as of now)
+
+Each comes with different colors for light and dark editor schemes.
