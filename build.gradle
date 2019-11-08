@@ -38,5 +38,5 @@ patchPluginXml {
     sinceBuild '192'
     untilBuild '193.*'
     pluginDescription = new File('plugin-description.html').getText('UTF-8')
-    changeNotes = new File("change-notes/${version.replace('.', '_')}").getText('UTF-8')
+    changeNotes = new File("change-notes/${version.replace('.', '_')}.html").getText('UTF-8')
 }
