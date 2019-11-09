@@ -6,6 +6,12 @@
 		Edoardo Luppi
 	</vendor>
 
+	<extensions defaultExtensionNs="com.intellij">
+		<additionalTextAttributes scheme="Default" file="colorSchemes/return-highlighter-default.xml" />
+		<additionalTextAttributes scheme="Darcula" file="colorSchemes/return-highlighter-default-darcula.xml" />
+		<colorSettingsPage implementation="com.github.lppedd.highlighter.settings.ReturnHighlighterColorSettingsPage" />
+	</extensions>
+
 	<depends>com.intellij.modules.platform</depends>
 	<depends optional="true" config-file="java.xml">com.intellij.java</depends>
 	<depends optional="true" config-file="javascript.xml">JavaScript</depends>

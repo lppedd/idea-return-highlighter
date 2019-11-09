@@ -1,9 +1,9 @@
 package com.github.lppedd.highlighter.java
 
-import com.github.lppedd.highlighter.AbstractReturnAnnotator
 import com.intellij.psi.PsiReturnStatement
+import com.github.lppedd.highlighter.AbstractReturnAnnotator as ARA
 
 /**
  * @author Edoardo Luppi
  */
-class JavaReturnAnnotator : AbstractReturnAnnotator<PsiReturnStatement>(PsiReturnStatement::class.java)
+class JavaReturnAnnotator : ARA<PsiReturnStatement>(PsiReturnStatement::class.java)

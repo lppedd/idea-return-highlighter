@@ -1,9 +1,9 @@
 package com.github.lppedd.highlighter.javascript
 
-import com.github.lppedd.highlighter.AbstractReturnAnnotator
 import com.intellij.lang.javascript.psi.JSReturnStatement
+import com.github.lppedd.highlighter.AbstractReturnAnnotator as ARA
 
 /**
  * @author Edoardo Luppi
  */
-class JavaScriptReturnAnnotator : AbstractReturnAnnotator<JSReturnStatement>(JSReturnStatement::class.java)
+class JavaScriptReturnAnnotator : ARA<JSReturnStatement>(JSReturnStatement::class.java)
