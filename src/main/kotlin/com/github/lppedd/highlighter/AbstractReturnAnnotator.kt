@@ -18,17 +18,17 @@ abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<
 			.globalScheme
 			.getAttributes(RETURN_KEYWORD)
 
-	@Suppress("UNCHECKED_CAST")
-	final override fun annotate(element: PsiElement, holder: AnnotationHolder) {
-		if (!klass.isAssignableFrom(element::class.java)) return
-
-		getExactPsiElement(element as T)?.also {
-			holder.createInfoAnnotation(it, null).run {
-				enforcedTextAttributes = returnKeywordAttributes
+	final override fun annotate(psiElement: PsiElement, holder: AnnotationHolder) {
+		@Suppress("UNCHECKED_CAST")
+		if (klass.isAssignableFrom(psiElement::class.java) && isValidContext(psiElement as T)) {
+			getPsiElement(psiElement)?.also {
+				holder.createInfoAnnotation(it, null).run {
+					enforcedTextAttributes = returnKeywordAttributes
+				}
 			}
 		}
 	}
 
-	protected open fun getExactPsiElement(psiReturnStatement: T): PsiElement? =
-			psiReturnStatement.firstChild
+	protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild
+	protected open fun isValidContext(psiElement: T) = true
 }

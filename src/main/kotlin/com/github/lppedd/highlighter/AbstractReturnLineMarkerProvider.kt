@@ -10,16 +10,18 @@ import com.intellij.util.PsiNavigateUtil
  * @author Edoardo Luppi
  */
 abstract class AbstractReturnLineMarkerProvider<T : PsiElement>(private val klass: Class<T>) : LineMarkerProviderDescriptor() {
-	override fun getIcon() = Icons.GUTTER_RETURN
+	final override fun getIcon() = Icons.GUTTER_RETURN
+	final override fun getLineMarkerInfo(element: PsiElement): LineMarkerInfo<PsiElement>? {
+		@Suppress("UNCHECKED_CAST")
+		if (klass.isAssignableFrom(element::class.java) && isValidContext(element as T)) {
+			return createLineMarkerInfo(getPsiElement(element))
+		}
 
-	@Suppress("UNCHECKED_CAST")
-	final override fun getLineMarkerInfo(element: PsiElement) =
-			if (klass.isAssignableFrom(element::class.java))
-				createLineMarkerInfo(getExactPsiElement(element as T))
-			else null
+		return null
+	}
 
-	protected open fun getExactPsiElement(psiReturnStatement: T): PsiElement? =
-			psiReturnStatement.firstChild
+	protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild
+	protected open fun isValidContext(psiElement: T) = true
 
 	private fun createLineMarkerInfo(psiElement: PsiElement?): LineMarkerInfo<PsiElement>? =
 			if (psiElement == null) null

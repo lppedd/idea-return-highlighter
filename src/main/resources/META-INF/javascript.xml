@@ -1,4 +1,12 @@
 <idea-plugin>
+	<application-components>
+		<component>
+			<implementation-class>
+				com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig
+			</implementation-class>
+		</component>
+	</application-components>
+
 	<extensions defaultExtensionNs="com.intellij">
 		<codeInsight.lineMarkerProvider
 				language="JavaScript"
@@ -7,6 +15,12 @@
 		<annotator
 				language="JavaScript"
 				implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnAnnotator"
+		/>
+		<applicationConfigurable
+				parentId="preferences.ReturnHighlighter"
+				id="preferences.ReturnHighlighter.JavaScript"
+				displayName="JavaScript &amp; TypeScript"
+				instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
 		/>
 	</extensions>
 </idea-plugin>

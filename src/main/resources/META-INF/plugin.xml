@@ -10,6 +10,12 @@
 		<additionalTextAttributes scheme="Default" file="colorSchemes/return-highlighter-default.xml" />
 		<additionalTextAttributes scheme="Darcula" file="colorSchemes/return-highlighter-default-darcula.xml" />
 		<colorSettingsPage implementation="com.github.lppedd.highlighter.settings.ReturnHighlighterColorSettingsPage" />
+		<applicationConfigurable
+				groupId="other"
+				id="preferences.ReturnHighlighter"
+				displayName="Return Highlighter"
+				instance="com.github.lppedd.highlighter.settings.ReturnHighlighterConfigurable"
+		/>
 	</extensions>
 
 	<depends>com.intellij.modules.platform</depends>
