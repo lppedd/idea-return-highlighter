@@ -34,8 +34,6 @@ This is why the plugin does
 #### Example
 
 <img width="845" height="200" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/usage-example.png" alt="Usage example">
-
-The gutter icon is clickable, and will take you to the return keyword.
   
 -----
 
