@@ -48,6 +48,8 @@ You can customize which languages will have the gutter icon via
 
 You'll find a _Return Highlighter_ section, with all available languages listed.
 
+<img width="845" height="169" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/gutter-icons.png" alt="Gutter icons">
+
 ### Disable/Customize the return keyword color highlighting
 
 You can disable or customize how the return keyword is highlighted, to stand out more, via  
@@ -61,6 +63,8 @@ This means potentially you can have nested functions, and thus nested `return` s
 To highlight only top-level `return` keywords, depending on the language, look under  
 **Settings > Return Highlighter > *[language]***  
 And check **Only top-level return keywords**.
+
+<img width="845" height="185" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
 
 [1]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
 [2]: https://github.com/lppedd/idea-return-highlighter/issues/new?assignees=lppedd&labels=enhancement%2C+language&template=language-support.md&title=Language+support%3A+%5BLANGUAGE%5D
