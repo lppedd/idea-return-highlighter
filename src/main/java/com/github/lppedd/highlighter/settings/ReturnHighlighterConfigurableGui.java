@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.intellij.ui.components.JBLabel;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
 
@@ -30,7 +31,7 @@ public class ReturnHighlighterConfigurableGui {
     final JPanel rootPanel = new JPanel();
     rootPanel.setLayout(new BorderLayout());
     rootPanel.add(
-        new JLabel("Configure highlighting for specific languages."),
+        new JBLabel("Configure highlighting for specific languages."),
         BorderLayout.NORTH
     );
 
