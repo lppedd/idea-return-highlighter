@@ -2,6 +2,7 @@ package com.github.lppedd.highlighter.javascript
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
+import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
 import com.github.lppedd.highlighter.isChildOf
 import com.intellij.lang.javascript.psi.*
 import com.intellij.lang.javascript.psi.ecmal4.JSClass
@@ -17,9 +18,9 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
 
     while (psi != null) {
       psi = when (check(psi)) {
-        PsiResult.VALID -> return true
-        PsiResult.INVALID -> return false
-        PsiResult.CONTINUE -> psi.parent
+        VALID -> return true
+        INVALID -> return false
+        CONTINUE -> psi.parent
       }
     }
 
@@ -30,7 +31,7 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
       when (psiElement) {
         is JSFunctionExpression -> checkJSFunctionExpression(psiElement)
         is JSFunction -> checkJSFunction(psiElement)
-        else -> PsiResult.CONTINUE
+        else -> CONTINUE
       }
 
   private fun checkJSFunctionExpression(psiElement: JSFunctionExpression): PsiResult {
@@ -45,7 +46,7 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
     )
 
     if (jsField != null) {
-      return PsiResult.VALID
+      return VALID
     }
 
     // Or when directly assigned to a Module Variable.
@@ -59,7 +60,7 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
         stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
     )
 
-    return if (jsFile != null) PsiResult.VALID else PsiResult.INVALID
+    return if (jsFile != null) VALID else INVALID
   }
 
   private fun checkJSFunction(psiElement: JSFunction): PsiResult {
@@ -67,6 +68,6 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
     // child of a Class, or a Module (file).
     val parent: PsiElement? = psiElement.parent
     val isParentValid = parent is JSClass<*> || parent is JSFile
-    return if (isParentValid) PsiResult.VALID else PsiResult.INVALID
+    return if (isParentValid) VALID else INVALID
   }
 }
