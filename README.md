@@ -22,7 +22,7 @@ Sometimes it happens we find difficult to read source files; take for example th
 It is not immediately apparent a `return` statement is present at line `3`.  
 This is why the plugin does
 
- - Show a gutter icon next to the `return`ing lines
+ - Show a gutter icon next to the `return`ing lines (clicking on it will take you to the return statement!)
  - Highlight the `return` keyword, so that it stands out more
 
 #### Supported languages
