@@ -1,4 +1,4 @@
-<img align="left" width="80" height="78" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
+<img align="left" width="70" height="68" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
 
 # Return Highlighter ([@JetBrains Plugins Repository][1])
 
