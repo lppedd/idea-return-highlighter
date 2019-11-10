@@ -1,6 +1,8 @@
 <img align="left" width="80" height="78" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
 
-# Return Highlighter ([JetBrains Plugins Repository][https://plugins.jetbrains.com/plugin/13303-return-highlighter])
+# Return Highlighter ([@JetBrains Plugins Repository][https://plugins.jetbrains.com/plugin/13303-return-highlighter])
+
+<small>Supported IDE versions: `192.*` to `193.*`</small> 
 
 The aim of this plugin is to highlight `return` keywords in source code.  
 Sometimes it happens we find difficult to read source files; take for example this piece of code
