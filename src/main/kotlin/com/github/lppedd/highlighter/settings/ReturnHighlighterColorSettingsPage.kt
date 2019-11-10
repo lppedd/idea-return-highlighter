@@ -20,7 +20,12 @@ class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySor
       arrayOf(AttributesDescriptor("Return keyword", AbstractReturnAnnotator.RETURN_KEYWORD))
 
   override fun getHighlighter() = PlainSyntaxHighlighter()
-  override fun getAdditionalHighlightingTagToDescriptorMap() = null
   override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
-  override fun getDemoText() = ""
+  override fun getDemoText() = """
+      final String value = getValue();
+      <return>return</return> value;
+    """.trimIndent()
+
+  override fun getAdditionalHighlightingTagToDescriptorMap() =
+      mapOf(Pair("return", AbstractReturnAnnotator.RETURN_KEYWORD))
 }
