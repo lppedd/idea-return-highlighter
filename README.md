@@ -59,6 +59,4 @@ To highlight only top-level `return` keywords, depending on the language, look u
 **Settings > Return Highlighter > *[language]***  
 And check **Only top-level return keywords**.
 
-As of now, only JavaScript &amp; TypeScript are supported.
-
 [https://plugins.jetbrains.com/plugin/13303-return-highlighter]: https://plugins.jetbrains.com/plugin/13303-return-highlighter

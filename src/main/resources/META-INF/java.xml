@@ -1,4 +1,12 @@
 <idea-plugin>
+	<application-components>
+		<component>
+			<implementation-class>
+				com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig
+			</implementation-class>
+		</component>
+	</application-components>
+
 	<extensions defaultExtensionNs="com.intellij">
 		<codeInsight.lineMarkerProvider
 				language="JAVA"
@@ -7,6 +15,12 @@
 		<annotator
 				language="JAVA"
 				implementationClass="com.github.lppedd.highlighter.java.JavaReturnAnnotator"
+		/>
+		<applicationConfigurable
+				parentId="preferences.ReturnHighlighter"
+				id="preferences.ReturnHighlighter.Java"
+				displayName="Java"
+				instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
 		/>
 	</extensions>
 </idea-plugin>
