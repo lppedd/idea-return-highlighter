@@ -6,13 +6,20 @@ import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.options.ConfigurableEP
 import com.intellij.openapi.options.SearchableConfigurable
 import com.intellij.openapi.options.ex.Settings
+import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.labels.LinkLabel
+import java.awt.Font
 import javax.swing.border.EmptyBorder
 
 /**
  * @author Edoardo Luppi
  */
 class ReturnHighlighterConfigurable : SearchableConfigurable {
+  private val noSupportedLanguage =
+      JBLabel("You have no supported languages enabled in your environment.").apply {
+        font = font.deriveFont(font.style or Font.BOLD)
+      }
+
   private var returnHighlighterGui: ReturnHighlighterConfigurableGui? = ReturnHighlighterConfigurableGui()
   private val rootPanel = returnHighlighterGui?.rootPanel
 
@@ -23,9 +30,10 @@ class ReturnHighlighterConfigurable : SearchableConfigurable {
         .map {
           LinkLabel.create(it.displayName, buildRunnable(it)).apply {
             alignmentX = 0f
-            border = EmptyBorder(1, 17, 3, 1)
+            border = EmptyBorder(1, 1, 3, 1)
           }
         }
+        .ifEmpty { listOf(noSupportedLanguage) }
         .forEach { listPanel?.add(it) }
   }
 
