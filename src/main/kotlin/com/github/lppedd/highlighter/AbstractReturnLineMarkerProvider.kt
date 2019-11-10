@@ -29,7 +29,7 @@ abstract class AbstractReturnLineMarkerProvider<T : PsiElement>(private val klas
           psiElement,
           psiElement.textRange,
           Icons.GUTTER_RETURN,
-          { "Return statement" },
+          { ReturnHighlighterBundle["rh.gutter.text"] },
           { _, elt -> PsiNavigateUtil.navigate(elt) },
           GutterIconRenderer.Alignment.LEFT
       )

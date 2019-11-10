@@ -18,8 +18,7 @@
 		/>
 		<applicationConfigurable
 				parentId="preferences.ReturnHighlighter"
-				id="preferences.ReturnHighlighter.JavaScript"
-				displayName="JavaScript &amp; TypeScript"
+				id="preferences.ReturnHighlighter.javascript"
 				instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
 		/>
 	</extensions>

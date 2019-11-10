@@ -16,7 +16,7 @@ import com.intellij.psi.PsiKeyword
  */
 @State(
     name = "Java",
-    storages = [Storage(Constants.STORAGE_FILE)]
+    storages = [Storage(Constants.ISTORAGE_FILE)]
 )
 class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
   private var state = JavaConfig()

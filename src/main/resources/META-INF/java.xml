@@ -18,8 +18,7 @@
 		/>
 		<applicationConfigurable
 				parentId="preferences.ReturnHighlighter"
-				id="preferences.ReturnHighlighter.Java"
-				displayName="Java"
+				id="preferences.ReturnHighlighter.java"
 				instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
 		/>
 	</extensions>

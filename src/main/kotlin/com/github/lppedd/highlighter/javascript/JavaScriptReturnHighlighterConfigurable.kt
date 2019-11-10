@@ -1,6 +1,7 @@
 package com.github.lppedd.highlighter.javascript
 
 import com.github.lppedd.highlighter.Constants
+import com.github.lppedd.highlighter.ReturnHighlighterBundle
 import com.intellij.openapi.options.SearchableConfigurable
 import javax.swing.JComponent
 
@@ -11,8 +12,8 @@ class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
   private val config = JavaScriptReturnHighlighterConfig.INSTANCE
   private val gui = JavaScriptReturnHighlighterConfigurableGui()
 
-  override fun getId() = "preferences.${Constants.APP_NAME}.JavaScript"
-  override fun getDisplayName() = "JavaScript &amp; TypeScript"
+  override fun getId() = "preferences.${Constants.IAPP_NAME}.JavaScript"
+  override fun getDisplayName() = ReturnHighlighterBundle["rh.settings.javascript"]
 
   override fun apply() {
     config.state = config.state.copy(

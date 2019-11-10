@@ -16,7 +16,7 @@ import com.intellij.openapi.project.ProjectManager
  */
 @State(
     name = "JavaScript",
-    storages = [Storage(Constants.STORAGE_FILE)]
+    storages = [Storage(Constants.ISTORAGE_FILE)]
 )
 class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptConfig> {
   private var state = JavaScriptConfig()

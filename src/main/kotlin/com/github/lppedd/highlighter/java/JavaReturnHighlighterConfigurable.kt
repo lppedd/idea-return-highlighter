@@ -1,6 +1,7 @@
 package com.github.lppedd.highlighter.java
 
 import com.github.lppedd.highlighter.Constants
+import com.github.lppedd.highlighter.ReturnHighlighterBundle
 import com.intellij.openapi.options.SearchableConfigurable
 import javax.swing.JComponent
 
@@ -11,8 +12,8 @@ class JavaReturnHighlighterConfigurable : SearchableConfigurable {
   private val config = JavaReturnHighlighterConfig.INSTANCE
   private val gui = JavaReturnHighlighterConfigurableGui()
 
-  override fun getId() = "preferences.${Constants.APP_NAME}.Java"
-  override fun getDisplayName() = "Java"
+  override fun getId() = "preferences.${Constants.IAPP_NAME}.Java"
+  override fun getDisplayName() = ReturnHighlighterBundle["rh.settings.java"]
 
   override fun apply() {
     config.state = config.state.copy(

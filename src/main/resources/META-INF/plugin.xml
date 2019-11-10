@@ -13,7 +13,6 @@
 		<applicationConfigurable
 				groupId="other"
 				id="preferences.ReturnHighlighter"
-				displayName="Return Highlighter"
 				instance="com.github.lppedd.highlighter.settings.ReturnHighlighterConfigurable"
 		/>
 	</extensions>
