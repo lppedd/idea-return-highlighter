@@ -2,7 +2,7 @@
 
 # Return Highlighter ([@JetBrains Plugins Repository][1])
 
-<small>Supported IDE versions: `192.*` to `193.*`</small> 
+<small>Supported IDE versions: `192.*` to `193.*` (both inclusive)</small> 
 
 The aim of this plugin is to highlight `return` keywords in source code.  
 Sometimes it happens we find difficult to read source files; take for example this piece of code
