@@ -28,7 +28,7 @@ This is why the plugin does
 #### Supported languages
 
  - Java
- - JavaScript &amp; TypeScript
+ - JavaScript and TypeScript
  - Need another language? [Open an issue][2]
   
 #### Example
