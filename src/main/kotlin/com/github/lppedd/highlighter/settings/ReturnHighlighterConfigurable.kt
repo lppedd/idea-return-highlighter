@@ -38,7 +38,7 @@ class ReturnHighlighterConfigurable : SearchableConfigurable {
   }
 
   override fun getId() = "preferences.${Constants.APP_NAME}"
-  override fun getDisplayName() = "Return Highlighter"
+  override fun getDisplayName() = Constants.PRESENTABLE_APP_NAME
   override fun isModified() = false
   override fun apply() = Unit
   override fun createComponent() = rootPanel

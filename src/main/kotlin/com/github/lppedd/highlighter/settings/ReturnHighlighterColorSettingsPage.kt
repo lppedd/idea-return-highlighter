@@ -1,6 +1,7 @@
 package com.github.lppedd.highlighter.settings
 
 import com.github.lppedd.highlighter.AbstractReturnAnnotator
+import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.Icons
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter
 import com.intellij.openapi.options.colors.AttributesDescriptor
@@ -13,7 +14,7 @@ import com.intellij.psi.codeStyle.DisplayPrioritySortable
  * @author Edoardo Luppi
  */
 class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySortable {
-  override fun getDisplayName() = "Return Highlighter"
+  override fun getDisplayName() = Constants.PRESENTABLE_APP_NAME
   override fun getIcon() = Icons.GUTTER_RETURN
   override fun getPriority() = DisplayPriority.COMMON_SETTINGS
   override fun getAttributeDescriptors() =

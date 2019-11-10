@@ -5,5 +5,6 @@ package com.github.lppedd.highlighter
  */
 object Constants {
   const val APP_NAME = "ReturnHighlighter"
+  const val PRESENTABLE_APP_NAME = "Return Highlighter"
   const val STORAGE_FILE = "returnHighlighter.xml"
 }
