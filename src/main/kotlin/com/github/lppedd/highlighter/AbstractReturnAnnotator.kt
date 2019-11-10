@@ -20,7 +20,10 @@ abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<
 
   final override fun annotate(psiElement: PsiElement, holder: AnnotationHolder) {
     @Suppress("UNCHECKED_CAST")
-    if (klass.isAssignableFrom(psiElement::class.java) && isValidContext(psiElement as T)) {
+    if (!returnKeywordAttributes.isEmpty
+        && klass.isAssignableFrom(psiElement::class.java)
+        && isValidContext(psiElement as T)
+    ) {
       getPsiElement(psiElement)?.also {
         holder.createInfoAnnotation(it, null).run {
           enforcedTextAttributes = returnKeywordAttributes
