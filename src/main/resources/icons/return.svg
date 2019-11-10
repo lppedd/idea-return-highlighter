@@ -32,13 +32,11 @@
 				transform="matrix(1,0,0,1.0125,0.0186759,-0.03750005)"
 				style="fill:#6e6e6e" />
 		<rect
-				stroke="null"
 				id="svg_6"
 				height="2.929018"
 				width="0.98192525"
 				y="2.9889507"
 				x="9.2814035"
-				stroke-opacity="null"
 				style="fill:#6e6e6e;stroke-width:0.97113597" />
 	</g>
 </svg>
