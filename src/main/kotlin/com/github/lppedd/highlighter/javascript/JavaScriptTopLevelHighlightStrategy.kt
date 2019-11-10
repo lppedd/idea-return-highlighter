@@ -48,36 +48,25 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
       return PsiResult.VALID
     }
 
-    // Or when directly assigned to a Module Variable
-    var jsVariable = psiElement.isChildOf(
+    // Or when directly assigned to a Module Variable.
+    // Note: we need to ensure the Variable is really top-level (Module),
+    //  and this is done with the second isChildOf call
+    val jsFile = psiElement.isChildOf(
         parentClass = JSVariable::class.java,
+        stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
+    )?.isChildOf(
+        parentClass = JSFile::class.java,
         stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
     )
 
-    // We need to ensure the Variable is really top-level (Module)
-    if (jsVariable != null) {
-      jsVariable = jsVariable.isChildOf(
-          parentClass = JSFile::class.java,
-          stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
-      )
-    }
-
-    return if (jsVariable != null) {
-      PsiResult.VALID
-    } else {
-      PsiResult.INVALID
-    }
+    return if (jsFile != null) PsiResult.VALID else PsiResult.INVALID
   }
 
   private fun checkJSFunction(psiElement: JSFunction): PsiResult {
     // A return statement is valid inside a Function which is a direct
     // child of a Class, or a Module (file).
-    val parent = psiElement.parent
-
-    return if (parent is JSClass<*> || parent is JSFile) {
-      PsiResult.VALID
-    } else {
-      PsiResult.INVALID
-    }
+    val parent: PsiElement? = psiElement.parent
+    val isParentValid = parent is JSClass<*> || parent is JSFile
+    return if (isParentValid) PsiResult.VALID else PsiResult.INVALID
   }
 }
