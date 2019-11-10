@@ -9,5 +9,6 @@ import com.intellij.psi.PsiKeyword
 object JavaAlwaysHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
   // Note: it seems the Java Psi structure isn't quite right when errors are
   //  present. Thus, we need to intercept a lower-level PsiElement
-  override fun isValidContext(psiElement: PsiKeyword) = "$psiElement" == "PsiKeyword:return"
+  override fun isValidContext(psiElement: PsiKeyword) =
+      psiElement.text == PsiKeyword.RETURN
 }

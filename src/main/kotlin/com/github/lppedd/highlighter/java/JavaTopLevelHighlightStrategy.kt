@@ -13,7 +13,7 @@ object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
   override fun isValidContext(psiElement: PsiKeyword): Boolean {
     // Note: it seems the Java Psi structure isn't quite right when errors are
     //  present. Thus, we need to intercept a lower-level PsiElement
-    if ("$psiElement" != "PsiKeyword:return") {
+    if (psiElement.text != PsiKeyword.RETURN) {
       return false;
     }
 
