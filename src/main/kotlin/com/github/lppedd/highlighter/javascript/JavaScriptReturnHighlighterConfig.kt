@@ -20,21 +20,27 @@ import com.intellij.openapi.project.ProjectManager
 )
 class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptConfig> {
   private var state = JavaScriptConfig()
-
-  override fun loadState(state: JavaScriptConfig) {
-    this.state = state
-  }
+  private var highlightStrategy: ReturnHighlightStrategy<JSReturnStatement> = JavaScriptAlwaysHighlightStrategy
 
   override fun getState(): JavaScriptConfig = state.copy()
+  override fun loadState(state: JavaScriptConfig) {
+    this.state = state
+    updateCurrentHighlightStrategy()
+  }
 
   fun setState(state: JavaScriptConfig) {
     this.state = state
+    updateCurrentHighlightStrategy()
     refreshFiles()
   }
 
-  fun getHighlightStrategy(): ReturnHighlightStrategy<JSReturnStatement> =
-      if (state.isOnlyTopLevelReturns) JavaScriptTopLevelHighlightStrategy
-      else JavaScriptAlwaysHighlightStrategy
+  fun getHighlightStrategy() = highlightStrategy
+
+  private fun updateCurrentHighlightStrategy() {
+    highlightStrategy =
+        if (state.isOnlyTopLevelReturns) JavaScriptTopLevelHighlightStrategy
+        else JavaScriptAlwaysHighlightStrategy
+  }
 
   private fun refreshFiles() {
     ProjectManager.getInstance()

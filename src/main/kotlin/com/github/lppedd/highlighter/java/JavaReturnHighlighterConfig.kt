@@ -20,21 +20,27 @@ import com.intellij.psi.PsiKeyword
 )
 class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
   private var state = JavaConfig()
-
-  override fun loadState(state: JavaConfig) {
-    this.state = state
-  }
+  private var highlightStrategy: ReturnHighlightStrategy<PsiKeyword> = JavaAlwaysHighlightStrategy
 
   override fun getState(): JavaConfig = state.copy()
+  override fun loadState(state: JavaConfig) {
+    this.state = state
+    updateCurrentHighlightStrategy()
+  }
 
   fun setState(state: JavaConfig) {
     this.state = state
+    updateCurrentHighlightStrategy()
     refreshFiles()
   }
 
-  fun getHighlightStrategy(): ReturnHighlightStrategy<PsiKeyword> =
-      if (state.isOnlyTopLevelReturns) JavaTopLevelHighlightStrategy
-      else JavaAlwaysHighlightStrategy
+  fun getHighlightStrategy() = highlightStrategy
+
+  private fun updateCurrentHighlightStrategy() {
+    highlightStrategy =
+        if (state.isOnlyTopLevelReturns) JavaTopLevelHighlightStrategy
+        else JavaAlwaysHighlightStrategy
+  }
 
   private fun refreshFiles() {
     ProjectManager.getInstance()
