@@ -8,10 +8,10 @@ Sometimes it happens we find difficult to read source files; take for example th
 ```typescript
 1  private toggleRowCheck(rowId: string, doCheck: boolean): boolean {
 2    if (doCheck) {
-3     if (this.checkedRows.size >= (this.selectionOpt.limit || Infinity)) return false;
+3      if (this.checkedRows.size >= (this.selectionOpt.limit || Infinity)) return false;
 4      this.checkedRows.add(rowId);
 5    } else {
-6     this.checkedRows.delete(rowId);
+6      this.checkedRows.delete(rowId);
 7    }
 8    return true;
 9  }
