@@ -20,7 +20,7 @@ abstract class AbstractReturnLineMarkerProvider<T : PsiElement>(private val klas
     return null
   }
 
-  protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild
+  protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild ?: psiElement
   protected open fun isValidContext(psiElement: T) = true
 
   private fun createLineMarkerInfo(psiElement: PsiElement?): LineMarkerInfo<PsiElement>? =

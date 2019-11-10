@@ -29,6 +29,6 @@ abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<
     }
   }
 
-  protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild
+  protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild ?: psiElement
   protected open fun isValidContext(psiElement: T) = true
 }
