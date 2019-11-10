@@ -9,8 +9,14 @@ import com.intellij.psi.*
 /**
  * @author Edoardo Luppi
  */
-object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiReturnStatement> {
-  override fun isValidContext(psiElement: PsiReturnStatement): Boolean {
+object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
+  override fun isValidContext(psiElement: PsiKeyword): Boolean {
+    // Note: it seems the Java Psi structure isn't quite right when errors are
+    //  present. Thus, we need to intercept a lower-level PsiElement
+    if ("$psiElement" != "PsiKeyword:return") {
+      return false;
+    }
+
     var psi: PsiElement? = psiElement
 
     while (psi != null) {

@@ -9,7 +9,7 @@ import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.openapi.project.ProjectManager
-import com.intellij.psi.PsiReturnStatement
+import com.intellij.psi.PsiKeyword
 
 /**
  * @author Edoardo Luppi
@@ -32,7 +32,7 @@ class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
     refreshFiles()
   }
 
-  fun getHighlightStrategy(): ReturnHighlightStrategy<PsiReturnStatement> =
+  fun getHighlightStrategy(): ReturnHighlightStrategy<PsiKeyword> =
       if (state.isOnlyTopLevelReturns) JavaTopLevelHighlightStrategy
       else JavaAlwaysHighlightStrategy
 
