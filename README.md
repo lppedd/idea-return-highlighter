@@ -66,5 +66,11 @@ And check **Only top-level return keywords**.
 
 <img width="845" height="185" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
 
+-----
+
+## Author
+
+ - Edoardo Luppi (<lp.edoardo@gmail.com>)
+
 [1]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
 [2]: https://github.com/lppedd/idea-return-highlighter/issues/new?assignees=lppedd&labels=enhancement%2C+language&template=language-support.md&title=Language+support%3A+%5BLANGUAGE%5D
