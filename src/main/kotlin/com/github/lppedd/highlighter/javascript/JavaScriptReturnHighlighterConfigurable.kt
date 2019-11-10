@@ -10,7 +10,10 @@ import javax.swing.JComponent
  */
 class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
   private val config = JavaScriptReturnHighlighterConfig.INSTANCE
-  private val gui = JavaScriptReturnHighlighterConfigurableGui()
+  private val gui = JavaScriptReturnHighlighterConfigurableGui().apply {
+    info.text = ReturnHighlighterBundle["rh.settings.custom.javascript"]
+    onlyTopLevelReturns.text = ReturnHighlighterBundle["rh.settings.custom.javascript.topLevel"]
+  }
 
   override fun getId() = "preferences.${Constants.IAPP_NAME}.JavaScript"
   override fun getDisplayName() = ReturnHighlighterBundle["rh.settings.javascript"]
