@@ -44,7 +44,7 @@ class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptCon
   }
 
   companion object {
-    val instance: JavaScriptReturnHighlighterConfig by lazy {
+    val INSTANCE: JavaScriptReturnHighlighterConfig by lazy {
       ApplicationManager.getApplication().getComponent(JavaScriptReturnHighlighterConfig::class.java)
     }
   }

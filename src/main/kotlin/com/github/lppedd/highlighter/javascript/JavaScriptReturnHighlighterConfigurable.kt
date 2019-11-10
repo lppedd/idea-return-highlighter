@@ -8,7 +8,7 @@ import javax.swing.JComponent
  * @author Edoardo Luppi
  */
 class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
-  private val config = JavaScriptReturnHighlighterConfig.instance
+  private val config = JavaScriptReturnHighlighterConfig.INSTANCE
   private val gui = JavaScriptReturnHighlighterConfigurableGui()
 
   override fun getId() = "preferences.${Constants.APP_NAME}.JavaScript"
