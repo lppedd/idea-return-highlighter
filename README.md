@@ -1,6 +1,6 @@
 <img align="left" width="80" height="78" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
 
-# Return Highlighter ([@JetBrains Plugins Repository][https://plugins.jetbrains.com/plugin/13303-return-highlighter])
+# Return Highlighter ([@JetBrains Plugins Repository][1])
 
 <small>Supported IDE versions: `192.*` to `193.*`</small> 
 
@@ -29,6 +29,7 @@ This is why the plugin does
 
  - Java
  - JavaScript &amp; TypeScript
+ - Need another language? [Open an issue][2]
   
 #### Example
 
@@ -61,4 +62,5 @@ To highlight only top-level `return` keywords, depending on the language, look u
 **Settings > Return Highlighter > *[language]***  
 And check **Only top-level return keywords**.
 
-[https://plugins.jetbrains.com/plugin/13303-return-highlighter]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
+[1]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
+[2]: https://github.com/lppedd/idea-return-highlighter/issues/new?assignees=lppedd&labels=enhancement%2C+language&template=language-support.md&title=Language+support%3A+%5BLANGUAGE%5D
