@@ -13,39 +13,39 @@ import com.intellij.util.ui.JBUI.Borders;
  * @author Edoardo Luppi
  */
 public class ReturnHighlighterConfigurableGui {
-	private JPanel rootPanel;
-	private JPanel listPanel;
+  private JPanel rootPanel;
+  private JPanel listPanel;
 
-	@NotNull
-	public JPanel getRootPanel() {
-		return rootPanel;
-	}
+  @NotNull
+  public JPanel getRootPanel() {
+    return rootPanel;
+  }
 
-	@NotNull
-	public JPanel getListPanel() {
-		return listPanel;
-	}
+  @NotNull
+  public JPanel getListPanel() {
+    return listPanel;
+  }
 
-	private void createUIComponents() {
-		final JPanel rootPanel = new JPanel();
-		rootPanel.setLayout(new BorderLayout());
-		rootPanel.add(
-				new JLabel("Configure highlighting for specific languages."),
-				BorderLayout.NORTH
-		);
+  private void createUIComponents() {
+    final JPanel rootPanel = new JPanel();
+    rootPanel.setLayout(new BorderLayout());
+    rootPanel.add(
+        new JLabel("Configure highlighting for specific languages."),
+        BorderLayout.NORTH
+    );
 
-		final JPanel listPanel = buildListPanel();
-		rootPanel.add(listPanel, BorderLayout.WEST);
+    final JPanel listPanel = buildListPanel();
+    rootPanel.add(listPanel, BorderLayout.WEST);
 
-		this.rootPanel = rootPanel;
-		this.listPanel = listPanel;
-	}
+    this.rootPanel = rootPanel;
+    this.listPanel = listPanel;
+  }
 
-	private JPanel buildListPanel() {
-		final JPanel listPanel = new JPanel();
-		listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
-		listPanel.setBorder(Borders.emptyLeft(10));
-		listPanel.add(Box.createRigidArea(JBUI.size(0, 10)));
-		return listPanel;
-	}
+  private JPanel buildListPanel() {
+    final JPanel listPanel = new JPanel();
+    listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
+    listPanel.setBorder(Borders.emptyLeft(10));
+    listPanel.add(Box.createRigidArea(JBUI.size(0, 10)));
+    return listPanel;
+  }
 }

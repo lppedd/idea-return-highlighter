@@ -6,18 +6,18 @@ import javax.swing.*;
  * @author Edoardo Luppi
  */
 public class JavaScriptReturnHighlighterConfigurableGui {
-	private JPanel rootPanel;
-	private JCheckBox isOnlyTopLevelReturns;
+  private JPanel rootPanel;
+  private JCheckBox isOnlyTopLevelReturns;
 
-	public JPanel getRootPanel() {
-		return rootPanel;
-	}
+  public JPanel getRootPanel() {
+    return rootPanel;
+  }
 
-	public Boolean isOnlyTopLevelReturns() {
-		return isOnlyTopLevelReturns.isSelected();
-	}
+  public Boolean isOnlyTopLevelReturns() {
+    return isOnlyTopLevelReturns.isSelected();
+  }
 
-	public void setOnlyTopLevelReturns(final Boolean value) {
-		isOnlyTopLevelReturns.setSelected(value);
-	}
+  public void setOnlyTopLevelReturns(final Boolean value) {
+    isOnlyTopLevelReturns.setSelected(value);
+  }
 }

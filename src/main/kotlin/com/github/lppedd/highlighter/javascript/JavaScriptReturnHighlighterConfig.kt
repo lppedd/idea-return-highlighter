@@ -15,41 +15,41 @@ import com.intellij.openapi.project.ProjectManager
  * @author Edoardo Luppi
  */
 @State(
-		name = "JavaScript",
-		storages = [Storage(Constants.STORAGE_FILE)]
+    name = "JavaScript",
+    storages = [Storage(Constants.STORAGE_FILE)]
 )
 class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptConfig> {
-	private var state = JavaScriptConfig()
+  private var state = JavaScriptConfig()
 
-	override fun loadState(state: JavaScriptConfig) {
-		this.state = state;
-	}
+  override fun loadState(state: JavaScriptConfig) {
+    this.state = state
+  }
 
-	override fun getState(): JavaScriptConfig = state.copy()
+  override fun getState(): JavaScriptConfig = state.copy()
 
-	fun setState(state: JavaScriptConfig) {
-		this.state = state;
-		refreshFiles()
-	}
+  fun setState(state: JavaScriptConfig) {
+    this.state = state
+    refreshFiles()
+  }
 
-	fun getHighlightStrategy(): ReturnHighlightStrategy<JSReturnStatement> =
-			if (state.isOnlyTopLevelReturns) JavaScriptTopLevelHighlightStrategy
-			else JavaScriptAlwaysHighlightStrategy
+  fun getHighlightStrategy(): ReturnHighlightStrategy<JSReturnStatement> =
+      if (state.isOnlyTopLevelReturns) JavaScriptTopLevelHighlightStrategy
+      else JavaScriptAlwaysHighlightStrategy
 
-	private fun refreshFiles() {
-		ProjectManager.getInstance()
-				.openProjects
-				.map { DaemonCodeAnalyzer.getInstance(it) }
-				.forEach { it.restart() }
-	}
+  private fun refreshFiles() {
+    ProjectManager.getInstance()
+        .openProjects
+        .map { DaemonCodeAnalyzer.getInstance(it) }
+        .forEach { it.restart() }
+  }
 
-	companion object {
-		val instance: JavaScriptReturnHighlighterConfig by lazy {
-			ApplicationManager.getApplication().getComponent(JavaScriptReturnHighlighterConfig::class.java)
-		}
-	}
+  companion object {
+    val instance: JavaScriptReturnHighlighterConfig by lazy {
+      ApplicationManager.getApplication().getComponent(JavaScriptReturnHighlighterConfig::class.java)
+    }
+  }
 
-	data class JavaScriptConfig(
-			var isOnlyTopLevelReturns: Boolean = false
-	)
+  data class JavaScriptConfig(
+      var isOnlyTopLevelReturns: Boolean = false
+  )
 }

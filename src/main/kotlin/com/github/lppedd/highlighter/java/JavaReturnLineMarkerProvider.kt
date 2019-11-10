@@ -7,5 +7,5 @@ import com.github.lppedd.highlighter.AbstractReturnLineMarkerProvider as ARLMP
  * @author Edoardo Luppi
  */
 class JavaReturnLineMarkerProvider : ARLMP<PsiReturnStatement>(PsiReturnStatement::class.java) {
-	override fun getName() = "Java"
+  override fun getName() = "Java"
 }
