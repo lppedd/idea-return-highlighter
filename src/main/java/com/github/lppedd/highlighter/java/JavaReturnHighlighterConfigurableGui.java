@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.github.lppedd.highlighter.ReturnHighlighterBundle;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
 
@@ -15,19 +16,17 @@ public class JavaReturnHighlighterConfigurableGui {
   private JBLabel info;
   private JBCheckBox isOnlyTopLevelReturns;
 
+  public JavaReturnHighlighterConfigurableGui(final ReturnHighlighterBundle bundle) {
+    this();
+    info.setText(bundle.get("rh.settings.custom.java"));
+    isOnlyTopLevelReturns.setText(bundle.get("rh.settings.custom.java.topLevel"));
+  }
+
+  private JavaReturnHighlighterConfigurableGui() {}
+
   @NotNull
   public JPanel getRootPanel() {
     return rootPanel;
-  }
-
-  @NotNull
-  public JBLabel getInfo() {
-    return info;
-  }
-
-  @NotNull
-  public JBCheckBox getOnlyTopLevelReturns() {
-    return isOnlyTopLevelReturns;
   }
 
   @NotNull

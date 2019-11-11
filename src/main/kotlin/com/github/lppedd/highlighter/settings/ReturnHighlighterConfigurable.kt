@@ -22,11 +22,9 @@ class ReturnHighlighterConfigurable : SearchableConfigurable {
         font = font.deriveFont(font.style or Font.BOLD)
       }
 
-  private var returnHighlighterGui: ReturnHighlighterConfigurableGui? = ReturnHighlighterConfigurableGui()
-  private val rootPanel = returnHighlighterGui?.rootPanel
+  private var gui = ReturnHighlighterConfigurableGui()
 
   init {
-    val listPanel = returnHighlighterGui?.listPanel
     Configurable.APPLICATION_CONFIGURABLE.extensionList
         .filter { it.id?.startsWith("preferences.${Constants.IAPP_NAME}.") ?: false }
         .map {
@@ -38,21 +36,18 @@ class ReturnHighlighterConfigurable : SearchableConfigurable {
           }
         }
         .ifEmpty { listOf(noSupportedLanguage) }
-        .forEach { listPanel?.add(it) }
+        .forEach { gui.listPanel.add(it) }
   }
 
   override fun getId() = "preferences.${Constants.IAPP_NAME}"
   override fun getDisplayName() = ReturnHighlighterBundle["rh.app.presentableName"]
   override fun isModified() = false
   override fun apply() = Unit
-  override fun createComponent() = rootPanel
-  override fun disposeUIResources() {
-    returnHighlighterGui = null
-  }
+  override fun createComponent() = gui.rootPanel
 
   private fun buildRunnable(configurableEP: ConfigurableEP<Configurable>): () -> Unit =
       {
-        val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(rootPanel))
+        val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(gui.rootPanel))
         val configurable = settings?.find(configurableEP.id)
         settings?.select(configurable)
       }
