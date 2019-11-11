@@ -2,7 +2,10 @@
 
 # Return Highlighter ([@JetBrains Plugins Repository][1])
 
+<br>Looking for the latest **plugin binaries**? Get them [here][3] as `.zip`  
 <small>Supported IDE versions: `192.*` to `193.*` (both inclusive)</small> 
+
+-----
 
 The aim of this plugin is to highlight `return` keywords in source code.  
 Sometimes it happens we find difficult to read source files; take for example this piece of code
@@ -53,7 +56,7 @@ You'll find a _Return Highlighter_ section, with all available languages listed.
 You can disable or customize how the return keyword is highlighted, to stand out more, via  
 **Settings > Editor > Color Scheme > Return Highlighter**
 
-To reset the values to the default ones, check **Inherit values from** (not shown here).
+To reset values to the default ones, check **Inherit values from** (not shown here).
 
 <img width="845" height="424" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/style.png" alt="Style">
 
@@ -76,3 +79,4 @@ And check **Only top-level return keywords**.
 
 [1]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
 [2]: https://github.com/lppedd/idea-return-highlighter/issues/new?assignees=lppedd&labels=enhancement%2C+language&template=language-support.md&title=Language+support%3A+%5BLANGUAGE%5D
+[3]: https://github.com/lppedd/idea-return-highlighter/releases
