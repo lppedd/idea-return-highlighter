@@ -53,6 +53,8 @@ You'll find a _Return Highlighter_ section, with all available languages listed.
 You can disable or customize how the return keyword is highlighted, to stand out more, via  
 **Settings > Editor > Color Scheme > Return Highlighter**
 
+To reset the values to the default ones, check **Inherit values from** (not shown here).
+
 <img width="845" height="424" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/style.png" alt="Style">
 
 ### Limit the scope of the plugin
