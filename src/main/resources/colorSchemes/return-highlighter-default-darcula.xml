@@ -1,5 +1,10 @@
 <?xml version='1.0'?>
 <list>
+	<option name="Return Highlighter defaults">
+		<value>
+			<option name="BACKGROUND" value="344134" />
+		</value>
+	</option>
 	<option name="RH_RETURN_KEYWORD">
 		<value>
 			<option name="BACKGROUND" value="344134" />

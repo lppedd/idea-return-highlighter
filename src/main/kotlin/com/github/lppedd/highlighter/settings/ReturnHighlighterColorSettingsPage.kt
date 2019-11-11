@@ -20,7 +20,7 @@ class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySor
   override fun getAttributeDescriptors() =
       arrayOf(AttributesDescriptor(
           ReturnHighlighterBundle["rh.settings.colors.attr.retKey"],
-          AbstractReturnAnnotator.RETURN_KEYWORD
+          AbstractReturnAnnotator.TAK_RETURN
       ))
 
   override fun getHighlighter() = PlainSyntaxHighlighter()
@@ -28,5 +28,5 @@ class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySor
   override fun getDemoText() = ReturnHighlighterBundle["rh.settings.colors.demoText"]
 
   override fun getAdditionalHighlightingTagToDescriptorMap() =
-      mapOf(Pair("return", AbstractReturnAnnotator.RETURN_KEYWORD))
+      mapOf(Pair("return", AbstractReturnAnnotator.TAK_RETURN))
 }

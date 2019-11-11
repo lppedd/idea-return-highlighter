@@ -11,12 +11,15 @@ import com.intellij.psi.PsiElement
  */
 abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<T>) : Annotator {
   companion object {
-    val RETURN_KEYWORD = TextAttributesKey.createTextAttributesKey("RH_RETURN_KEYWORD")
+    val TAK_RETURN = TextAttributesKey.createTextAttributesKey(
+        "RH_RETURN_KEYWORD",
+        TextAttributesKey.createTextAttributesKey("Return Highlighter defaults")
+    )
   }
 
   private val returnKeywordAttributes = EditorColorsManager.getInstance()
       .globalScheme
-      .getAttributes(RETURN_KEYWORD)
+      .getAttributes(TAK_RETURN)
 
   final override fun annotate(psiElement: PsiElement, holder: AnnotationHolder) {
     @Suppress("UNCHECKED_CAST")
