@@ -78,9 +78,16 @@ To reset values to the default ones, check **Inherit values from**.
   **Settings > Return Highlighter > *[language]***  
   and check **Skip simple getters**.
   
-  A _tooltip_ is there to show examples of simple getters, per language.
+  <img width="845" height="177" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
 
-<img width="845" height="177" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
+  A _tooltip_ is there to show examples of simple getters, per language, but for the sake of README completeness
+  here is one too in TypeScript
+  
+  ```
+  isEnabled(): boolean {
+    return true;
+  }
+  ```
 
 -----
 
