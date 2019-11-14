@@ -12,17 +12,18 @@ fun Array<out Class<out PsiElement>>.containsClass(psiClass: Class<out PsiElemen
   return false
 }
 
-fun PsiElement.isChildOf(
-    parentClass: Class<out PsiElement>,
-    vararg stopClasses: Class<out PsiElement>
-): PsiElement? {
+fun <T : PsiElement> PsiElement.isChildOf(
+    parentClass: Class<out T>,
+    vararg stopClasses: Class<out T>
+): T? {
   var psi: PsiElement? = parent
 
   while (psi != null) {
     val psiClass = psi::class.java
 
+    @Suppress("UNCHECKED_CAST")
     when {
-      parentClass.isAssignableFrom(psiClass) -> return psi
+      parentClass.isAssignableFrom(psiClass) -> return psi as T?
       stopClasses.containsClass(psiClass) -> return null
       else -> psi = psi.parent
     }
