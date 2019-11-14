@@ -14,7 +14,7 @@ object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
     // Note: it seems the Java Psi structure isn't quite right when errors are
     //  present. Thus, we need to intercept a lower-level PsiElement
     if (psiElement.text != PsiKeyword.RETURN) {
-      return false;
+      return false
     }
 
     var psi: PsiElement? = psiElement
