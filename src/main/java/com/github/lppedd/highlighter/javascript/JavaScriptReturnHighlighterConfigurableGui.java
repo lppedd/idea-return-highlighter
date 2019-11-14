@@ -5,6 +5,7 @@ import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
 import com.github.lppedd.highlighter.ReturnHighlighterBundle;
+import com.intellij.ui.ContextHelpLabel;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
 
@@ -14,14 +15,13 @@ import com.intellij.ui.components.JBLabel;
 public class JavaScriptReturnHighlighterConfigurableGui {
   private JPanel rootPanel;
   private JBLabel info;
+  private JPanel skipSimpleGettersPanel;
   private JBCheckBox isOnlyTopLevelReturns;
   private JBCheckBox isSkipSimpleGetters;
 
   public JavaScriptReturnHighlighterConfigurableGui(final ReturnHighlighterBundle bundle) {
     this();
-    info.setText(bundle.get("rh.settings.custom.javascript"));
-    isOnlyTopLevelReturns.setText(bundle.get("rh.settings.custom.javascript.topLevel"));
-    isSkipSimpleGetters.setText(bundle.get("rh.settings.custom.javascript.simpleGetters"));
+    finishUpComponents(bundle);
   }
 
   private JavaScriptReturnHighlighterConfigurableGui() {}
@@ -47,5 +47,15 @@ public class JavaScriptReturnHighlighterConfigurableGui {
 
   public void setSkipSimpleGetters(@NotNull final Boolean value) {
     isSkipSimpleGetters.setSelected(value);
+  }
+
+  private void finishUpComponents(final ReturnHighlighterBundle bundle) {
+    info.setText(bundle.get("rh.settings.custom.javascript"));
+    isOnlyTopLevelReturns.setText(bundle.get("rh.settings.custom.javascript.topLevel"));
+    isSkipSimpleGetters.setText(bundle.get("rh.settings.custom.javascript.simpleGetters"));
+
+    final String simpleGettersTooltip =
+        bundle.get("rh.settings.custom.javascript.simpleGetters.tooltip");
+    skipSimpleGettersPanel.add(ContextHelpLabel.create(simpleGettersTooltip));
   }
 }
