@@ -165,6 +165,8 @@
     </JavaCodeStyleSettings>
     <JetCodeStyleSettings>
       <option name="IMPORT_NESTED_CLASSES" value="true" />
+      <option name="CONTINUATION_INDENT_FOR_EXPRESSION_BODIES" value="false" />
+      <option name="CONTINUATION_INDENT_IN_ELVIS" value="false" />
     </JetCodeStyleSettings>
     <MSSQLCodeStyleSettings version="1">
       <option name="myVersion" value="1" />
@@ -838,6 +840,7 @@
       <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
       <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1" />
+      <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
         <option name="CONTINUATION_INDENT_SIZE" value="4" />
