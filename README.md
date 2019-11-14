@@ -62,14 +62,16 @@ To reset values to the default ones, check **Inherit values from**.
 
 ### Limit the scope of the plugin
 
-- Certain languages offer features like _lambda expressions_ (Java) or _function expressions_ (JavaScript).
+- #### Top-level returns only
+  Certain languages offer features like _lambda expressions_ (Java) or _function expressions_ (JavaScript).
   This means potentially you can have nested functions, and thus nested `return` statements.
 
   To highlight only top-level `return` keywords, depending on the language, look under  
   **Settings > Return Highlighter > *[language]***  
   and check **Only top-level return keywords**.
 
-- Highlighting `return` statements in simple functions/methods can be annoying.  
+- #### Skip simple getters
+  Highlighting `return` statements in simple functions/methods can be annoying.  
   Thus it is possible to disable it for such elements.
 
   To skip `return` keywords inside simple getters, look under  
