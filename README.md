@@ -1,3 +1,5 @@
+:bell: <strong>Localization needed! PRs are welcomed</strong> (look [here][4] for bundles) :sunglasses:  
+
 <img align="left" width="70" height="68" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
 
 # Return Highlighter ([@JetBrains Plugins Repository][1])
@@ -98,3 +100,4 @@ To reset values to the default ones, check **Inherit values from**.
 [1]: https://plugins.jetbrains.com/plugin/13303-return-highlighter
 [2]: https://github.com/lppedd/idea-return-highlighter/issues/new?assignees=lppedd&labels=enhancement%2C+language&template=language-support.md&title=Language+support%3A+%5BLANGUAGE%5D
 [3]: https://github.com/lppedd/idea-return-highlighter/releases
+[4]: https://github.com/lppedd/idea-return-highlighter/tree/master/src/main/resources/messages
