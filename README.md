@@ -56,20 +56,29 @@ You'll find a _Return Highlighter_ section, with all available languages listed.
 You can disable or customize how the return keyword is highlighted, to stand out more, via  
 **Settings > Editor > Color Scheme > Return Highlighter**
 
-To reset values to the default ones, check **Inherit values from** (not shown here).
+To reset values to the default ones, check **Inherit values from**.
 
-<img width="845" height="424" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/style.png" alt="Style">
+<img width="845" height="516" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/style.png" alt="Style">
 
 ### Limit the scope of the plugin
 
-Certain languages offer features like _lambda expressions_ (Java) or _function expressions_ (JavaScript).  
-This means potentially you can have nested functions, and thus nested `return` statements.
+- Certain languages offer features like _lambda expressions_ (Java) or _function expressions_ (JavaScript).
+  This means potentially you can have nested functions, and thus nested `return` statements.
 
-To highlight only top-level `return` keywords, depending on the language, look under  
-**Settings > Return Highlighter > *[language]***  
-And check **Only top-level return keywords**.
+  To highlight only top-level `return` keywords, depending on the language, look under  
+  **Settings > Return Highlighter > *[language]***  
+  and check **Only top-level return keywords**.
 
-<img width="845" height="185" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
+- Highlighting `return` statements in simple functions/methods can be annoying.  
+  Thus it is possible to disable it for such elements.
+
+  To skip `return` keywords inside simple getters, look under  
+  **Settings > Return Highlighter > *[language]***  
+  and check **Skip simple getters**.
+  
+  A _tooltip_ is there to show examples of simple getters, per language.
+
+<img width="845" height="177" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/scope.png" alt="Scope">
 
 -----
 
