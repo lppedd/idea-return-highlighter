@@ -1,11 +1,9 @@
 package com.github.lppedd.highlighter.java
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
-import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
-import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.INVALID
-import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.VALID
 import com.github.lppedd.highlighter.isChildOf
 import com.intellij.psi.*
+import com.intellij.psi.util.PsiTreeUtil
 
 /**
  * @author Edoardo Luppi
@@ -18,28 +16,34 @@ class JavaSimpleGetterHighlightStrategy(
       return false
     }
 
-    val returnStatement = psiElement.isChildOf(PsiReturnStatement::class.java)
-    val codeBlock = returnStatement?.parent
+    val psiReturnStatement = psiElement.isChildOf(PsiReturnStatement::class.java)
+    val psiCodeBlock = psiReturnStatement?.parent
 
-    return if (codeBlock is PsiCodeBlock && codeBlock.parent is PsiMethod) {
-      checkPsiCodeBlock(codeBlock) == VALID
+    return if (psiCodeBlock is PsiCodeBlock && psiCodeBlock.parent is PsiMethod) {
+      checkPsiCodeBlock(psiCodeBlock)
     } else {
       true
     }
   }
 
-  private fun checkPsiCodeBlock(psiCodeBlock: PsiCodeBlock): PsiResult {
-    for (value in psiCodeBlock.children) {
-      if ((value is PsiJavaToken && value.tokenType == JavaTokenType.LBRACE)
-          || value is PsiEmptyStatement
-          || value is PsiWhiteSpace) {
-        continue
-      }
-
-      if (value is PsiReturnStatement) return INVALID
-      if (value !is PsiReturnStatement) return VALID
+  private fun checkPsiCodeBlock(psiCodeBlock: PsiCodeBlock): Boolean {
+    val nonEmptyStatements = psiCodeBlock.children.filter {
+      it !is PsiJavaToken
+      && it !is PsiEmptyStatement
+      && it !is PsiWhiteSpace
     }
 
-    return VALID
+    return when {
+      nonEmptyStatements.isEmpty() -> false
+      nonEmptyStatements.size == 1 -> !containsOnlyReferences(nonEmptyStatements[0])
+      else -> true
+    }
   }
+
+  private fun containsOnlyReferences(psiElement: PsiElement) =
+    PsiTreeUtil.findChildOfAnyType(
+        psiElement,
+        PsiMethodCallExpression::class.java,
+        PsiPolyadicExpression::class.java
+    ) == null
 }
