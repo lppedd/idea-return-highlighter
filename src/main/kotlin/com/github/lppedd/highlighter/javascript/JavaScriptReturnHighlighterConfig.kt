@@ -37,9 +37,18 @@ class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptCon
   fun getHighlightStrategy() = highlightStrategy
 
   private fun updateCurrentHighlightStrategy() {
-    highlightStrategy =
-        if (state.isOnlyTopLevelReturns) JavaScriptTopLevelHighlightStrategy
-        else JavaScriptAlwaysHighlightStrategy
+    var highlightStrategy: ReturnHighlightStrategy<JSReturnStatement> =
+        JavaScriptAlwaysHighlightStrategy
+
+    if (state.isOnlyTopLevelReturns) {
+      highlightStrategy = JavaScriptTopLevelHighlightStrategy
+    }
+
+    if (state.isSkipSimpleGetters) {
+      highlightStrategy = JavaScriptSimpleGetterHighlightStrategy(highlightStrategy)
+    }
+
+    this.highlightStrategy = highlightStrategy
   }
 
   private fun refreshFiles() {
@@ -56,6 +65,7 @@ class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptCon
   }
 
   data class JavaScriptConfig(
-      var isOnlyTopLevelReturns: Boolean = false
+      var isOnlyTopLevelReturns: Boolean = false,
+      var isSkipSimpleGetters: Boolean = false
   )
 }

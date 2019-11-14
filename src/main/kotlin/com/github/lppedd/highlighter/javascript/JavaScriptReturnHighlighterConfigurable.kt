@@ -17,19 +17,23 @@ class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
 
   override fun apply() {
     config.state = config.state.copy(
-        isOnlyTopLevelReturns = gui.isOnlyTopLevelReturns
+        isOnlyTopLevelReturns = gui.isOnlyTopLevelReturns,
+        isSkipSimpleGetters = gui.isSkipSimpleGetters
     )
   }
 
   override fun reset() {
     gui.isOnlyTopLevelReturns = config.state.isOnlyTopLevelReturns
+    gui.isSkipSimpleGetters = config.state.isSkipSimpleGetters
   }
 
   override fun isModified() =
       gui.isOnlyTopLevelReturns != config.state.isOnlyTopLevelReturns
+          || gui.isSkipSimpleGetters != config.state.isSkipSimpleGetters
 
   override fun createComponent(): JComponent? {
     gui.isOnlyTopLevelReturns = config.state.isOnlyTopLevelReturns
+    gui.isSkipSimpleGetters = config.state.isSkipSimpleGetters
     return gui.rootPanel
   }
 }

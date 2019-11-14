@@ -15,11 +15,13 @@ public class JavaScriptReturnHighlighterConfigurableGui {
   private JPanel rootPanel;
   private JBLabel info;
   private JBCheckBox isOnlyTopLevelReturns;
+  private JBCheckBox isSkipSimpleGetters;
 
   public JavaScriptReturnHighlighterConfigurableGui(final ReturnHighlighterBundle bundle) {
     this();
     info.setText(bundle.get("rh.settings.custom.javascript"));
     isOnlyTopLevelReturns.setText(bundle.get("rh.settings.custom.javascript.topLevel"));
+    isSkipSimpleGetters.setText(bundle.get("rh.settings.custom.javascript.simpleGetters"));
   }
 
   private JavaScriptReturnHighlighterConfigurableGui() {}
@@ -34,7 +36,16 @@ public class JavaScriptReturnHighlighterConfigurableGui {
     return isOnlyTopLevelReturns.isSelected();
   }
 
+  @NotNull
+  public Boolean isSkipSimpleGetters() {
+    return isSkipSimpleGetters.isSelected();
+  }
+
   public void setOnlyTopLevelReturns(@NotNull final Boolean value) {
     isOnlyTopLevelReturns.setSelected(value);
+  }
+
+  public void setSkipSimpleGetters(@NotNull final Boolean value) {
+    isSkipSimpleGetters.setSelected(value);
   }
 }
