@@ -37,9 +37,17 @@ class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
   fun getHighlightStrategy() = highlightStrategy
 
   private fun updateCurrentHighlightStrategy() {
-    highlightStrategy =
-        if (state.isOnlyTopLevelReturns) JavaTopLevelHighlightStrategy
-        else JavaAlwaysHighlightStrategy
+    var highlightStrategy: ReturnHighlightStrategy<PsiKeyword> = JavaAlwaysHighlightStrategy
+
+    if (state.isOnlyTopLevelReturns) {
+      highlightStrategy = JavaTopLevelHighlightStrategy
+    }
+
+    if (state.isSkipSimpleGetters) {
+      highlightStrategy = JavaSimpleGetterHighlightStrategy(highlightStrategy)
+    }
+
+    this.highlightStrategy = highlightStrategy
   }
 
   private fun refreshFiles() {
@@ -56,6 +64,7 @@ class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
   }
 
   data class JavaConfig(
-      var isOnlyTopLevelReturns: Boolean = false
+      var isOnlyTopLevelReturns: Boolean = false,
+      var isSkipSimpleGetters: Boolean = false
   )
 }
