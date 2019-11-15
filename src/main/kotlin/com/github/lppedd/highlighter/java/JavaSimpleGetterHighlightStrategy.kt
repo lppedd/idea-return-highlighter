@@ -1,6 +1,7 @@
 package com.github.lppedd.highlighter.java
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
+import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.*
 import com.intellij.psi.util.PsiTreeUtil
 
@@ -15,6 +16,8 @@ class JavaSimpleGetterHighlightStrategy(
       return false
     }
 
+    ProgressManager.checkCanceled()
+
     val psiCodeBlock = PsiTreeUtil.getParentOfType(
         psiElement,
         PsiReturnStatement::class.java,
@@ -22,6 +25,7 @@ class JavaSimpleGetterHighlightStrategy(
     )?.parent
 
     return if (psiCodeBlock is PsiCodeBlock && psiCodeBlock.parent is PsiMethod) {
+      ProgressManager.checkCanceled()
       checkPsiCodeBlock(psiCodeBlock)
     } else {
       true

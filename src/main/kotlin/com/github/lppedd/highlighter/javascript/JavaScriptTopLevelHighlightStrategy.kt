@@ -6,6 +6,7 @@ import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
 import com.intellij.lang.javascript.psi.*
 import com.intellij.lang.javascript.psi.ecmal4.JSClass
 import com.intellij.lang.javascript.psi.ecmal4.JSQualifiedNamedElement
+import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
 
@@ -17,6 +18,7 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
     var psi: PsiElement? = psiElement
 
     while (psi != null) {
+      ProgressManager.checkCanceled()
       psi = when (check(psi)) {
         VALID -> return true
         INVALID -> return false
@@ -48,6 +50,8 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
     if (jsField is JSField) {
       return VALID
     }
+
+    ProgressManager.checkCanceled()
 
     // Or when directly assigned to a Module Variable.
     // Note: we need to ensure the Variable is really top-level (Module),

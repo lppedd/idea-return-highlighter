@@ -2,6 +2,7 @@ package com.github.lppedd.highlighter.javascript
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.intellij.lang.javascript.psi.*
+import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiWhiteSpace
 import com.intellij.psi.impl.source.tree.LeafPsiElement
@@ -17,6 +18,8 @@ class JavaScriptSimpleGetterHighlightStrategy(
     if (!delegate.isValidContext(psiElement)) {
       return false
     }
+
+    ProgressManager.checkCanceled()
 
     val jsBlockStatement = PsiTreeUtil.getParentOfType(
         psiElement,
@@ -51,6 +54,8 @@ class JavaScriptSimpleGetterHighlightStrategy(
       // There are other statements in addition to the return one
       return true
     }
+
+    ProgressManager.checkCanceled()
 
     val nonEmptyExpressions = jsReturnStatement.children.filter {
       it !is JSEmptyStatement && it !is PsiWhiteSpace

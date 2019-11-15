@@ -3,6 +3,7 @@ package com.github.lppedd.highlighter.java
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
+import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.*
 import com.intellij.psi.util.PsiTreeUtil
 
@@ -20,6 +21,7 @@ object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
     var psi: PsiElement? = psiElement
 
     while (psi != null) {
+      ProgressManager.checkCanceled()
       psi = when (check(psi)) {
         VALID -> return true
         INVALID -> return false
