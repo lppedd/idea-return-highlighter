@@ -3,8 +3,8 @@ package com.github.lppedd.highlighter.java
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
-import com.github.lppedd.highlighter.isChildOf
 import com.intellij.psi.*
+import com.intellij.psi.util.PsiTreeUtil
 
 /**
  * @author Edoardo Luppi
@@ -39,11 +39,13 @@ object JavaTopLevelHighlightStrategy : ReturnHighlightStrategy<PsiKeyword> {
 
   private fun checkLambdaExpression(psiElement: PsiLambdaExpression): PsiResult {
     // Lambda expressions are valid only if immediately assigned to a Field
-    val psiField = psiElement.isChildOf(
-        parentClass = PsiField::class.java,
-        stopClasses = *arrayOf(PsiLambdaExpression::class.java)
+    val psiField = PsiTreeUtil.getParentOfType(
+        psiElement,
+        PsiField::class.java,
+        true,
+        PsiLambdaExpression::class.java
     )
 
-    return if (psiField != null) VALID else INVALID
+    return if (psiField is PsiField) VALID else INVALID
   }
 }

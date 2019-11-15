@@ -1,7 +1,6 @@
 package com.github.lppedd.highlighter.javascript
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
-import com.github.lppedd.highlighter.isChildOf
 import com.intellij.lang.javascript.psi.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiWhiteSpace
@@ -19,7 +18,11 @@ class JavaScriptSimpleGetterHighlightStrategy(
       return false
     }
 
-    val jsBlockStatement = psiElement.isChildOf(JSBlockStatement::class.java)
+    val jsBlockStatement = PsiTreeUtil.getParentOfType(
+        psiElement,
+        JSBlockStatement::class.java,
+        true
+    )
 
     return if (jsBlockStatement is JSBlockStatement && jsBlockStatement.parent is JSFunction) {
       checkJSBlockStatement(jsBlockStatement, psiElement)

@@ -3,11 +3,11 @@ package com.github.lppedd.highlighter.javascript
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
-import com.github.lppedd.highlighter.isChildOf
 import com.intellij.lang.javascript.psi.*
 import com.intellij.lang.javascript.psi.ecmal4.JSClass
 import com.intellij.lang.javascript.psi.ecmal4.JSQualifiedNamedElement
 import com.intellij.psi.PsiElement
+import com.intellij.psi.util.PsiTreeUtil
 
 /**
  * @author Edoardo Luppi
@@ -37,30 +37,36 @@ object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnSta
   private fun checkJSFunctionExpression(psiElement: JSFunctionExpression): PsiResult {
     // Function Expressions are valid only if immediately assigned
     // to a Class Field, when in Class scope
-    val jsField = psiElement.isChildOf(
-        parentClass = JSField::class.java,
-        stopClasses = *arrayOf(
-            JSQualifiedNamedElement::class.java,
-            JSFile::class.java
-        )
+    val jsField = PsiTreeUtil.getParentOfType(
+        psiElement,
+        JSField::class.java,
+        true,
+        JSQualifiedNamedElement::class.java,
+        JSFile::class.java
     )
 
-    if (jsField != null) {
+    if (jsField is JSField) {
       return VALID
     }
 
     // Or when directly assigned to a Module Variable.
     // Note: we need to ensure the Variable is really top-level (Module),
     //  and this is done with the second isChildOf call
-    val jsFile = psiElement.isChildOf(
-        parentClass = JSVariable::class.java,
-        stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
-    )?.isChildOf(
-        parentClass = JSFile::class.java,
-        stopClasses = *arrayOf(JSQualifiedNamedElement::class.java)
-    )
+    val jsFile: JSFile? = PsiTreeUtil.getParentOfType(
+        psiElement,
+        JSVariable::class.java,
+        true,
+        JSQualifiedNamedElement::class.java
+    )?.let {
+      PsiTreeUtil.getParentOfType(
+          it,
+          JSFile::class.java,
+          true,
+          JSQualifiedNamedElement::class.java
+      )
+    }
 
-    return if (jsFile != null) VALID else INVALID
+    return if (jsFile is JSFile) VALID else INVALID
   }
 
   private fun checkJSFunction(psiElement: JSFunction): PsiResult {

@@ -1,7 +1,6 @@
 package com.github.lppedd.highlighter.java
 
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
-import com.github.lppedd.highlighter.isChildOf
 import com.intellij.psi.*
 import com.intellij.psi.util.PsiTreeUtil
 
@@ -16,8 +15,11 @@ class JavaSimpleGetterHighlightStrategy(
       return false
     }
 
-    val psiReturnStatement = psiElement.isChildOf(PsiReturnStatement::class.java)
-    val psiCodeBlock = psiReturnStatement?.parent
+    val psiCodeBlock = PsiTreeUtil.getParentOfType(
+        psiElement,
+        PsiReturnStatement::class.java,
+        true
+    )?.parent
 
     return if (psiCodeBlock is PsiCodeBlock && psiCodeBlock.parent is PsiMethod) {
       checkPsiCodeBlock(psiCodeBlock)
