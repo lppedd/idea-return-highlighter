@@ -3,10 +3,12 @@ package com.github.lppedd.highlighter.php
 import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig.PhpConfig
+import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
+import com.intellij.openapi.project.ProjectManager
 import com.jetbrains.php.lang.psi.elements.PhpReturn
 
 /**
@@ -20,12 +22,37 @@ class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
   private var state = PhpConfig()
   private var highlightStrategy: ReturnHighlightStrategy<PhpReturn> = PhpAlwaysHighlightStrategy
 
-  override fun getState(): PhpConfig = state
+  override fun getState(): PhpConfig = state.copy()
   override fun loadState(state: PhpConfig) {
     this.state = state
+    updateCurrentHighlightStrategy()
+  }
+
+  fun setState(state: PhpConfig) {
+    this.state = state
+    updateCurrentHighlightStrategy()
+    refreshFiles()
   }
 
   fun getHighlightStrategy() = highlightStrategy
+
+  private fun updateCurrentHighlightStrategy() {
+    var highlightStrategy: ReturnHighlightStrategy<PhpReturn> =
+      PhpAlwaysHighlightStrategy
+
+    if (state.isOnlyTopLevelReturns) {
+      highlightStrategy = PhpTopLevelHighlightStrategy
+    }
+
+    this.highlightStrategy = highlightStrategy
+  }
+
+  private fun refreshFiles() {
+    ProjectManager.getInstance()
+        .openProjects
+        .map { DaemonCodeAnalyzer.getInstance(it) }
+        .forEach { it.restart() }
+  }
 
   companion object {
     val INSTANCE: PhpReturnHighlighterConfig by lazy {
@@ -33,5 +60,5 @@ class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
     }
   }
 
-  class PhpConfig
+  data class PhpConfig(var isOnlyTopLevelReturns: Boolean = false)
 }

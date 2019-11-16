@@ -11,7 +11,7 @@
 
  - Java
  - JavaScript and TypeScript
- - PHP (initial - no customizations available)
+ - PHP (simple getters strategy is missing)
  - Need another language? [Open an issue][2]
 
 -----

@@ -5,6 +5,7 @@ import javax.swing.*;
 import org.jetbrains.annotations.NotNull;
 
 import com.github.lppedd.highlighter.ReturnHighlighterBundle;
+import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
 
 /**
@@ -13,7 +14,7 @@ import com.intellij.ui.components.JBLabel;
 public class PhpReturnHighlighterConfigurableGui {
   private JPanel rootPanel;
   private JBLabel info;
-  private JBLabel noOptionsAvailable;
+  private JBCheckBox isOnlyTopLevelReturns;
 
   public PhpReturnHighlighterConfigurableGui(final ReturnHighlighterBundle bundle) {
     this();
@@ -27,8 +28,17 @@ public class PhpReturnHighlighterConfigurableGui {
     return rootPanel;
   }
 
+  @NotNull
+  public Boolean isOnlyTopLevelReturns() {
+    return isOnlyTopLevelReturns.isSelected();
+  }
+
+  public void setOnlyTopLevelReturns(@NotNull final Boolean value) {
+    isOnlyTopLevelReturns.setSelected(value);
+  }
+
   private void finishUpComponents(final ReturnHighlighterBundle bundle) {
     info.setText(bundle.get("rh.settings.custom.php"));
-    noOptionsAvailable.setText(bundle.get("rh.settings.custom.noOptionsAvailable"));
+    isOnlyTopLevelReturns.setText(bundle.get("rh.settings.custom.php.topLevel"));
   }
 }
