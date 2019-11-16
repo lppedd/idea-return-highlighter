@@ -1,0 +1,25 @@
+<idea-plugin>
+	<application-components>
+		<component>
+			<implementation-class>
+				com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig
+			</implementation-class>
+		</component>
+	</application-components>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<codeInsight.lineMarkerProvider
+				language="PHP"
+				implementationClass="com.github.lppedd.highlighter.php.PhpReturnLineMarkerProvider"
+		/>
+		<annotator
+				language="PHP"
+				implementationClass="com.github.lppedd.highlighter.php.PhpReturnAnnotator"
+		/>
+		<applicationConfigurable
+				parentId="preferences.ReturnHighlighter"
+				id="preferences.ReturnHighlighter.php"
+				instance="com.github.lppedd.highlighter.php.PhpReturnHighlighterConfigurable"
+		/>
+	</extensions>
+</idea-plugin>

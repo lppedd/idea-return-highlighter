@@ -20,4 +20,5 @@
 	<depends>com.intellij.modules.platform</depends>
 	<depends optional="true" config-file="java.xml">com.intellij.java</depends>
 	<depends optional="true" config-file="javascript.xml">JavaScript</depends>
+	<depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
 </idea-plugin>
