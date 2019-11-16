@@ -34,6 +34,7 @@ This is why the plugin does
 
  - Java
  - JavaScript and TypeScript
+ - PHP (initial - no customizations available)
  - Need another language? [Open an issue][2]
   
 #### Example
