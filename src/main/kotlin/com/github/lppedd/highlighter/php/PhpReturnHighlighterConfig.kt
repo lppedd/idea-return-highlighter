@@ -1,14 +1,13 @@
 package com.github.lppedd.highlighter.php
 
+import com.github.lppedd.highlighter.Application
 import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig.PhpConfig
-import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
-import com.intellij.openapi.project.ProjectManager
 import com.jetbrains.php.lang.psi.elements.PhpReturn
 
 /**
@@ -31,7 +30,7 @@ class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
   fun setState(state: PhpConfig) {
     this.state = state
     updateCurrentHighlightStrategy()
-    refreshFiles()
+    Application.refreshFiles()
   }
 
   fun getHighlightStrategy() = highlightStrategy
@@ -45,13 +44,6 @@ class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
     }
 
     this.highlightStrategy = highlightStrategy
-  }
-
-  private fun refreshFiles() {
-    ProjectManager.getInstance()
-        .openProjects
-        .map { DaemonCodeAnalyzer.getInstance(it) }
-        .forEach { it.restart() }
   }
 
   companion object {
