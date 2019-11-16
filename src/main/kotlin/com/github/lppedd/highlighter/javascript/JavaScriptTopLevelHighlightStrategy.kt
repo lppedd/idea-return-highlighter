@@ -1,8 +1,8 @@
 package com.github.lppedd.highlighter.javascript
 
-import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
+import com.github.lppedd.highlighter.TopLevelReturnHighlightStrategy
 import com.intellij.lang.javascript.psi.*
 import com.intellij.lang.javascript.psi.ecmal4.JSClass
 import com.intellij.lang.javascript.psi.ecmal4.JSQualifiedNamedElement
@@ -13,28 +13,13 @@ import com.intellij.psi.util.PsiTreeUtil
 /**
  * @author Edoardo Luppi
  */
-object JavaScriptTopLevelHighlightStrategy : ReturnHighlightStrategy<JSReturnStatement> {
-  override fun isValidContext(psiElement: JSReturnStatement): Boolean {
-    var psi: PsiElement? = psiElement
-
-    while (psi != null) {
-      ProgressManager.checkCanceled()
-      psi = when (check(psi)) {
-        VALID -> return true
-        INVALID -> return false
-        CONTINUE -> psi.parent
-      }
+object JavaScriptTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<JSReturnStatement>() {
+  override fun check(psiElement: PsiElement): PsiResult =
+    when (psiElement) {
+      is JSFunctionExpression -> checkJSFunctionExpression(psiElement)
+      is JSFunction -> checkJSFunction(psiElement)
+      else -> CONTINUE
     }
-
-    return false
-  }
-
-  private fun check(psiElement: PsiElement): PsiResult =
-      when (psiElement) {
-        is JSFunctionExpression -> checkJSFunctionExpression(psiElement)
-        is JSFunction -> checkJSFunction(psiElement)
-        else -> CONTINUE
-      }
 
   private fun checkJSFunctionExpression(psiElement: JSFunctionExpression): PsiResult {
     // Function Expressions are valid only if immediately assigned

@@ -1,8 +1,8 @@
 package com.github.lppedd.highlighter.php
 
-import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult
 import com.github.lppedd.highlighter.ReturnHighlightStrategy.PsiResult.*
+import com.github.lppedd.highlighter.TopLevelReturnHighlightStrategy
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
@@ -14,23 +14,8 @@ import com.jetbrains.php.lang.psi.elements.Function
 /**
  * @author Edoardo Luppi
  */
-object PhpTopLevelHighlightStrategy : ReturnHighlightStrategy<PhpReturn> {
-  override fun isValidContext(psiElement: PhpReturn): Boolean {
-    var psi: PsiElement? = psiElement
-
-    while (psi != null) {
-      ProgressManager.checkCanceled()
-      psi = when (check(psi)) {
-        VALID -> return true
-        INVALID -> return false
-        CONTINUE -> psi.parent
-      }
-    }
-
-    return false
-  }
-
-  private fun check(psiElement: PsiElement): PsiResult =
+object PhpTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<PhpReturn>() {
+  override fun check(psiElement: PsiElement): PsiResult =
     when (psiElement) {
       is PhpExpression -> checkExpression(psiElement)
       is Function -> checkFunction(psiElement)
