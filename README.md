@@ -7,6 +7,13 @@
 <br>Looking for the latest **plugin binaries**? Get them [here][3] as `.zip`  
 <small>Supported IDE versions: `192.*` to `193.*` (both inclusive)</small> 
 
+#### Supported languages
+
+ - Java
+ - JavaScript and TypeScript
+ - PHP (initial - no customizations available)
+ - Need another language? [Open an issue][2]
+
 -----
 
 The aim of this plugin is to highlight `return` keywords in source code.  
@@ -29,13 +36,6 @@ This is why the plugin does
 
  - Show a gutter icon next to the `return`ing lines (clicking on it will take you to the return statement!)
  - Highlight the `return` keyword, so that it stands out more
-
-#### Supported languages
-
- - Java
- - JavaScript and TypeScript
- - PHP (initial - no customizations available)
- - Need another language? [Open an issue][2]
   
 #### Example
 
