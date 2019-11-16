@@ -12,7 +12,7 @@ class JavaReturnHighlighterConfigurable : SearchableConfigurable {
   private val config = JavaReturnHighlighterConfig.INSTANCE
   private val gui = JavaReturnHighlighterConfigurableGui(ReturnHighlighterBundle)
 
-  override fun getId() = "preferences.${Constants.IAPP_NAME}.Java"
+  override fun getId() = "preferences.${Constants.IAPP_NAME}.java"
   override fun getDisplayName() = ReturnHighlighterBundle["rh.settings.java"]
 
   override fun apply() {
