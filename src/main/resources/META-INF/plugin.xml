@@ -1,26 +1,26 @@
 <idea-plugin>
-	<id>com.github.lppedd.idea-return-highlighter</id>
-	<name>Return Highlighter</name>
-	<vendor email="lp.edoardo@gmail.com"
-	        url="https://github.com/lppedd/idea-return-highlighter">
-		Edoardo Luppi
-	</vendor>
+  <id>com.github.lppedd.idea-return-highlighter</id>
+  <name>Return Highlighter</name>
+  <vendor email="lp.edoardo@gmail.com"
+          url="https://github.com/lppedd/idea-return-highlighter">
+    Edoardo Luppi
+  </vendor>
 
-	<extensions defaultExtensionNs="com.intellij">
-		<additionalTextAttributes scheme="Default" file="colorSchemes/return-highlighter-default.xml" />
-		<additionalTextAttributes scheme="Darcula" file="colorSchemes/return-highlighter-default-darcula.xml" />
-		<colorSettingsPage implementation="com.github.lppedd.highlighter.settings.ReturnHighlighterColorSettingsPage" />
-		<applicationConfigurable
-				groupId="other"
-				id="preferences.ReturnHighlighter"
-				key="rh.app.presentableName"
-				bundle="messages.ReturnHighlighterBundle"
-				instance="com.github.lppedd.highlighter.settings.ReturnHighlighterConfigurable"
-		/>
-	</extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <additionalTextAttributes scheme="Default" file="colorSchemes/return-highlighter-default.xml" />
+    <additionalTextAttributes scheme="Darcula" file="colorSchemes/return-highlighter-default-darcula.xml" />
+    <colorSettingsPage implementation="com.github.lppedd.highlighter.settings.ReturnHighlighterColorSettingsPage" />
+    <applicationConfigurable
+        groupId="other"
+        id="preferences.ReturnHighlighter"
+        key="rh.app.presentableName"
+        bundle="messages.ReturnHighlighterBundle"
+        instance="com.github.lppedd.highlighter.settings.ReturnHighlighterConfigurable"
+    />
+  </extensions>
 
-	<depends>com.intellij.modules.platform</depends>
-	<depends optional="true" config-file="java.xml">com.intellij.java</depends>
-	<depends optional="true" config-file="javascript.xml">JavaScript</depends>
-	<depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
+  <depends>com.intellij.modules.platform</depends>
+  <depends optional="true" config-file="java.xml">com.intellij.java</depends>
+  <depends optional="true" config-file="javascript.xml">JavaScript</depends>
+  <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
 </idea-plugin>

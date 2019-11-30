@@ -1,22 +1,22 @@
 <idea-plugin>
-	<extensions defaultExtensionNs="com.intellij">
-		<codeInsight.lineMarkerProvider
-				language="JavaScript"
-				implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnLineMarkerProvider"
-		/>
-		<annotator
-				language="JavaScript"
-				implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnAnnotator"
-		/>
-		<applicationConfigurable
-				parentId="preferences.ReturnHighlighter"
-				id="preferences.ReturnHighlighter.javascript"
-				key="rh.settings.javascript"
-				bundle="messages.ReturnHighlighterBundle"
-				instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
-		/>
-		<applicationService
-				serviceImplementation="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig"
-		/>
-	</extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <codeInsight.lineMarkerProvider
+        language="JavaScript"
+        implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnLineMarkerProvider"
+    />
+    <annotator
+        language="JavaScript"
+        implementationClass="com.github.lppedd.highlighter.javascript.JavaScriptReturnAnnotator"
+    />
+    <applicationConfigurable
+        parentId="preferences.ReturnHighlighter"
+        id="preferences.ReturnHighlighter.javascript"
+        key="rh.settings.javascript"
+        bundle="messages.ReturnHighlighterBundle"
+        instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
+    />
+    <applicationService
+        serviceImplementation="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig"
+    />
+  </extensions>
 </idea-plugin>

@@ -1,20 +1,20 @@
 <idea-plugin>
-	<extensions defaultExtensionNs="com.intellij">
-		<codeInsight.lineMarkerProvider
-				language="JAVA"
-				implementationClass="com.github.lppedd.highlighter.java.JavaReturnLineMarkerProvider"
-		/>
-		<annotator
-				language="JAVA"
-				implementationClass="com.github.lppedd.highlighter.java.JavaReturnAnnotator"
-		/>
-		<applicationConfigurable
-				parentId="preferences.ReturnHighlighter"
-				id="preferences.ReturnHighlighter.java"
-				key="rh.settings.java"
-				bundle="messages.ReturnHighlighterBundle"
-				instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
-		/>
-		<applicationService serviceImplementation="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig" />
-	</extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <codeInsight.lineMarkerProvider
+        language="JAVA"
+        implementationClass="com.github.lppedd.highlighter.java.JavaReturnLineMarkerProvider"
+    />
+    <annotator
+        language="JAVA"
+        implementationClass="com.github.lppedd.highlighter.java.JavaReturnAnnotator"
+    />
+    <applicationConfigurable
+        parentId="preferences.ReturnHighlighter"
+        id="preferences.ReturnHighlighter.java"
+        key="rh.settings.java"
+        bundle="messages.ReturnHighlighterBundle"
+        instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
+    />
+    <applicationService serviceImplementation="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig" />
+  </extensions>
 </idea-plugin>
