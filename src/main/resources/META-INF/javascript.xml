@@ -19,6 +19,8 @@
 		<applicationConfigurable
 				parentId="preferences.ReturnHighlighter"
 				id="preferences.ReturnHighlighter.javascript"
+				key="rh.settings.javascript"
+				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
 		/>
 	</extensions>

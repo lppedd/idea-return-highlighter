@@ -19,6 +19,8 @@
 		<applicationConfigurable
 				parentId="preferences.ReturnHighlighter"
 				id="preferences.ReturnHighlighter.php"
+				key="rh.settings.php"
+				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.php.PhpReturnHighlighterConfigurable"
 		/>
 	</extensions>

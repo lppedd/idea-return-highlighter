@@ -13,6 +13,8 @@
 		<applicationConfigurable
 				groupId="other"
 				id="preferences.ReturnHighlighter"
+				key="rh.app.presentableName"
+				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.settings.ReturnHighlighterConfigurable"
 		/>
 	</extensions>

@@ -19,6 +19,8 @@
 		<applicationConfigurable
 				parentId="preferences.ReturnHighlighter"
 				id="preferences.ReturnHighlighter.java"
+				key="rh.settings.java"
+				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
 		/>
 	</extensions>
