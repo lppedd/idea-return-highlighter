@@ -9,9 +9,9 @@ import com.intellij.psi.PsiElement
 /**
  * @author Edoardo Luppi
  */
-abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<T>) : Annotator {
+abstract class AbstractReturnAnnotator<in T : PsiElement>(private val klass: Class<T>) : Annotator {
   companion object {
-    val TAK_RETURN = TextAttributesKey.createTextAttributesKey(
+    val TAK_RETURN: TextAttributesKey = TextAttributesKey.createTextAttributesKey(
         "RH_RETURN_KEYWORD",
         TextAttributesKey.createTextAttributesKey("Return Highlighter defaults")
     )
@@ -36,5 +36,5 @@ abstract class AbstractReturnAnnotator<T : PsiElement>(private val klass: Class<
   }
 
   protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild ?: psiElement
-  protected open fun isValidContext(psiElement: T) = true
+  protected open fun isValidContext(psiElement: T): Boolean = true
 }

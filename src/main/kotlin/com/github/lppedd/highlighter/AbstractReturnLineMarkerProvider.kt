@@ -5,12 +5,13 @@ import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor
 import com.intellij.openapi.editor.markup.GutterIconRenderer
 import com.intellij.psi.PsiElement
 import com.intellij.util.PsiNavigateUtil
+import javax.swing.Icon
 
 /**
  * @author Edoardo Luppi
  */
-abstract class AbstractReturnLineMarkerProvider<T : PsiElement>(private val klass: Class<T>) : LineMarkerProviderDescriptor() {
-  final override fun getIcon() = Icons.GUTTER_RETURN
+abstract class AbstractReturnLineMarkerProvider<in T : PsiElement>(private val klass: Class<T>) : LineMarkerProviderDescriptor() {
+  final override fun getIcon(): Icon = Icons.GUTTER_RETURN
   final override fun getLineMarkerInfo(element: PsiElement): LineMarkerInfo<PsiElement>? {
     @Suppress("UNCHECKED_CAST")
     if (klass.isAssignableFrom(element::class.java) && isValidContext(element as T)) {
@@ -21,16 +22,16 @@ abstract class AbstractReturnLineMarkerProvider<T : PsiElement>(private val klas
   }
 
   protected open fun getPsiElement(psiElement: T): PsiElement? = psiElement.firstChild ?: psiElement
-  protected open fun isValidContext(psiElement: T) = true
+  protected open fun isValidContext(psiElement: T): Boolean = true
 
   private fun createLineMarkerInfo(psiElement: PsiElement?): LineMarkerInfo<PsiElement>? =
-      if (psiElement == null) null
-      else LineMarkerInfo(
-          psiElement,
-          psiElement.textRange,
-          Icons.GUTTER_RETURN,
-          { ReturnHighlighterBundle["rh.gutter.text"] },
-          { _, elt -> PsiNavigateUtil.navigate(elt) },
-          GutterIconRenderer.Alignment.LEFT
-      )
+    if (psiElement == null) null
+    else LineMarkerInfo(
+        psiElement,
+        psiElement.textRange,
+        Icons.GUTTER_RETURN,
+        { ReturnHighlighterBundle["rh.gutter.text"] },
+        { _, elt -> PsiNavigateUtil.navigate(elt) },
+        GutterIconRenderer.Alignment.LEFT
+    )
 }

@@ -5,6 +5,6 @@ package com.github.lppedd.highlighter
  */
 @Suppress("SpellCheckingInspection")
 object Constants {
-  const val IAPP_NAME = "ReturnHighlighter"
-  const val ISTORAGE_FILE = "returnHighlighter.xml"
+  const val IAPP_NAME: String = "ReturnHighlighter"
+  const val ISTORAGE_FILE: String = "returnHighlighter.xml"
 }
