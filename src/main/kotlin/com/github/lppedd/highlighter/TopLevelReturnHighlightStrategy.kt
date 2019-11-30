@@ -8,7 +8,7 @@ import com.intellij.psi.PsiElement
 /**
  * @author Edoardo Luppi
  */
-abstract class TopLevelReturnHighlightStrategy<T : PsiElement> : ReturnHighlightStrategy<T> {
+abstract class TopLevelReturnHighlightStrategy<in T : PsiElement> : ReturnHighlightStrategy<T> {
   override fun isValidContext(psiElement: T): Boolean {
     var psi: PsiElement? = psiElement
 

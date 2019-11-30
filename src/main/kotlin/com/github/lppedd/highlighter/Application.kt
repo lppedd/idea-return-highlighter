@@ -11,6 +11,6 @@ object Application {
     ProjectManager.getInstance()
         .openProjects
         .map { DaemonCodeAnalyzer.getInstance(it) }
-        .forEach { it.restart() }
+        .forEach(DaemonCodeAnalyzer::restart)
   }
 }
