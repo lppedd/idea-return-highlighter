@@ -14,7 +14,7 @@ import com.jetbrains.php.lang.psi.elements.Function
 /**
  * @author Edoardo Luppi
  */
-object PhpTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<PhpReturn>() {
+internal object PhpTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<PhpReturn>() {
   override fun check(psiElement: PsiElement): PsiResult =
     when (psiElement) {
       is PhpExpression -> checkExpression(psiElement)

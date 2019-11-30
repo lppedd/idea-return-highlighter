@@ -9,7 +9,7 @@ import com.intellij.psi.util.PsiTreeUtil
 /**
  * @author Edoardo Luppi
  */
-object JavaTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<PsiKeyword>() {
+internal object JavaTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<PsiKeyword>() {
   override fun isValidContext(psiElement: PsiKeyword): Boolean {
     // Note: it seems the Java Psi structure isn't quite right when errors are
     //  present. Thus, we need to intercept a lower-level PsiElement

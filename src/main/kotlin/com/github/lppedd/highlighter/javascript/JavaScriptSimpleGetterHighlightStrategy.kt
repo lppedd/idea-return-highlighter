@@ -11,7 +11,7 @@ import com.intellij.psi.util.PsiTreeUtil
 /**
  * @author Edoardo Luppi
  */
-class JavaScriptSimpleGetterHighlightStrategy(
+internal class JavaScriptSimpleGetterHighlightStrategy(
     private val delegate: ReturnHighlightStrategy<JSReturnStatement>
 ) : ReturnHighlightStrategy<JSReturnStatement> {
   override fun isValidContext(psiElement: JSReturnStatement): Boolean {

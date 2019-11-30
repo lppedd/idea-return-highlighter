@@ -13,20 +13,20 @@ import com.intellij.psi.codeStyle.DisplayPrioritySortable
 /**
  * @author Edoardo Luppi
  */
-class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySortable {
+internal class ReturnHighlighterColorSettingsPage : ColorSettingsPage, DisplayPrioritySortable {
   override fun getDisplayName() = ReturnHighlighterBundle["rh.app.presentableName"]
   override fun getIcon() = Icons.GUTTER_RETURN
   override fun getPriority() = DisplayPriority.COMMON_SETTINGS
   override fun getAttributeDescriptors() =
-      arrayOf(AttributesDescriptor(
-          ReturnHighlighterBundle["rh.settings.colors.attr.retKey"],
-          AbstractReturnAnnotator.TAK_RETURN
-      ))
+    arrayOf(AttributesDescriptor(
+        ReturnHighlighterBundle["rh.settings.colors.attr.retKey"],
+        AbstractReturnAnnotator.TAK_RETURN
+    ))
 
   override fun getHighlighter() = PlainSyntaxHighlighter()
   override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
   override fun getDemoText() = ReturnHighlighterBundle["rh.settings.colors.demoText"]
 
   override fun getAdditionalHighlightingTagToDescriptorMap() =
-      mapOf(Pair("return", AbstractReturnAnnotator.TAK_RETURN))
+    mapOf(Pair("return", AbstractReturnAnnotator.TAK_RETURN))
 }

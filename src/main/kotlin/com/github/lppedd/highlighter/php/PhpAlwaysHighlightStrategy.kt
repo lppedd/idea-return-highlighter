@@ -6,6 +6,6 @@ import com.jetbrains.php.lang.psi.elements.PhpReturn
 /**
  * @author Edoardo Luppi
  */
-object PhpAlwaysHighlightStrategy : ReturnHighlightStrategy<PhpReturn> {
+internal object PhpAlwaysHighlightStrategy : ReturnHighlightStrategy<PhpReturn> {
   override fun isValidContext(psiElement: PhpReturn) = true
 }

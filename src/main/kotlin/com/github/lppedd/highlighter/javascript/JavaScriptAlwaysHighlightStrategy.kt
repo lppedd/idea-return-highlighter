@@ -6,6 +6,6 @@ import com.intellij.lang.javascript.psi.JSReturnStatement
 /**
  * @author Edoardo Luppi
  */
-object JavaScriptAlwaysHighlightStrategy : ReturnHighlightStrategy<JSReturnStatement> {
+internal object JavaScriptAlwaysHighlightStrategy : ReturnHighlightStrategy<JSReturnStatement> {
   override fun isValidContext(psiElement: JSReturnStatement) = true
 }

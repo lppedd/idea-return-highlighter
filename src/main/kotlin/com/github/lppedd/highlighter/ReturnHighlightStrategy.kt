@@ -5,7 +5,7 @@ import com.intellij.psi.PsiElement
 /**
  * @author Edoardo Luppi
  */
-interface ReturnHighlightStrategy<T : PsiElement> {
+interface ReturnHighlightStrategy<in T : PsiElement> {
   fun isValidContext(psiElement: T): Boolean
 
   enum class PsiResult {

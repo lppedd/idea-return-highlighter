@@ -8,7 +8,7 @@ import com.intellij.psi.util.PsiTreeUtil
 /**
  * @author Edoardo Luppi
  */
-class JavaSimpleGetterHighlightStrategy(
+internal class JavaSimpleGetterHighlightStrategy(
     private val delegate: ReturnHighlightStrategy<PsiKeyword>
 ) : ReturnHighlightStrategy<PsiKeyword> {
   override fun isValidContext(psiElement: PsiKeyword): Boolean {

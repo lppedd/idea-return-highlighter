@@ -13,7 +13,7 @@ import com.intellij.psi.util.PsiTreeUtil
 /**
  * @author Edoardo Luppi
  */
-object JavaScriptTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<JSReturnStatement>() {
+internal object JavaScriptTopLevelHighlightStrategy : TopLevelReturnHighlightStrategy<JSReturnStatement>() {
   override fun check(psiElement: PsiElement): PsiResult =
     when (psiElement) {
       is JSFunctionExpression -> checkJSFunctionExpression(psiElement)

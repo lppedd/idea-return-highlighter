@@ -16,11 +16,11 @@ import kotlin.test.assertNotNull
 /**
  * @author Edoardo Luppi
  */
-class ReturnHighlighterConfigurable : SearchableConfigurable {
+internal class ReturnHighlighterConfigurable : SearchableConfigurable {
   private val noSupportedLanguage =
-      JBLabel(ReturnHighlighterBundle["rh.settings.custom.global.noLang"]).apply {
-        font = font.deriveFont(font.style or Font.BOLD)
-      }
+    JBLabel(ReturnHighlighterBundle["rh.settings.custom.global.noLang"]).apply {
+      font = font.deriveFont(font.style or Font.BOLD)
+    }
 
   private var gui = ReturnHighlighterConfigurableGui()
 
@@ -46,9 +46,9 @@ class ReturnHighlighterConfigurable : SearchableConfigurable {
   override fun createComponent() = gui.rootPanel
 
   private fun buildRunnable(configurableEP: ConfigurableEP<Configurable>): () -> Unit =
-      {
-        val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(gui.rootPanel))
-        val configurable = settings?.find(configurableEP.id)
-        settings?.select(configurable)
-      }
+    {
+      val settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(gui.rootPanel))
+      val configurable = settings?.find(configurableEP.id)
+      settings?.select(configurable)
+    }
 }
