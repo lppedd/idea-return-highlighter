@@ -7,11 +7,11 @@ import com.github.lppedd.highlighter.AbstractReturnLineMarkerProvider as ARLMP
 /**
  * @author Edoardo Luppi
  */
-class JavaReturnLineMarkerProvider : ARLMP<PsiKeyword>(PsiKeyword::class.java) {
-  private val config = JavaReturnHighlighterConfig.INSTANCE
+internal class JavaReturnLineMarkerProvider : ARLMP<PsiKeyword>(PsiKeyword::class.java) {
+  private val config = JavaReturnHighlighterConfig.getInstance()
 
   override fun getName() = ReturnHighlighterBundle["rh.settings.java"]
   override fun getPsiElement(psiElement: PsiKeyword) = psiElement
   override fun isValidContext(psiElement: PsiKeyword) =
-      config.getHighlightStrategy().isValidContext(psiElement)
+    config.getHighlightStrategy().isValidContext(psiElement)
 }

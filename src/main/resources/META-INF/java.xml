@@ -1,12 +1,4 @@
 <idea-plugin>
-	<application-components>
-		<component>
-			<implementation-class>
-				com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig
-			</implementation-class>
-		</component>
-	</application-components>
-
 	<extensions defaultExtensionNs="com.intellij">
 		<codeInsight.lineMarkerProvider
 				language="JAVA"
@@ -23,5 +15,6 @@
 				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfigurable"
 		/>
+		<applicationService serviceImplementation="com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig" />
 	</extensions>
 </idea-plugin>

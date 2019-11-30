@@ -1,12 +1,4 @@
 <idea-plugin>
-	<application-components>
-		<component>
-			<implementation-class>
-				com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig
-			</implementation-class>
-		</component>
-	</application-components>
-
 	<extensions defaultExtensionNs="com.intellij">
 		<codeInsight.lineMarkerProvider
 				language="JavaScript"
@@ -22,6 +14,9 @@
 				key="rh.settings.javascript"
 				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfigurable"
+		/>
+		<applicationService
+				serviceImplementation="com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig"
 		/>
 	</extensions>
 </idea-plugin>

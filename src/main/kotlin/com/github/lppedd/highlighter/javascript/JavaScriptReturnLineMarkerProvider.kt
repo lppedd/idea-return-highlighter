@@ -7,10 +7,10 @@ import com.github.lppedd.highlighter.AbstractReturnLineMarkerProvider as ARLMP
 /**
  * @author Edoardo Luppi
  */
-class JavaScriptReturnLineMarkerProvider : ARLMP<JSReturnStatement>(JSReturnStatement::class.java) {
-  private val config = JavaScriptReturnHighlighterConfig.INSTANCE
+internal class JavaScriptReturnLineMarkerProvider : ARLMP<JSReturnStatement>(JSReturnStatement::class.java) {
+  private val config = JavaScriptReturnHighlighterConfig.getInstance()
 
   override fun getName() = ReturnHighlighterBundle["rh.settings.javascript"]
   override fun isValidContext(psiElement: JSReturnStatement) =
-      config.getHighlightStrategy().isValidContext(psiElement)
+    config.getHighlightStrategy().isValidContext(psiElement)
 }

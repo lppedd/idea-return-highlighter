@@ -4,8 +4,8 @@ import com.github.lppedd.highlighter.Application
 import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.java.JavaReturnHighlighterConfig.JavaConfig
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.psi.PsiKeyword
@@ -17,7 +17,12 @@ import com.intellij.psi.PsiKeyword
     name = "Java",
     storages = [Storage(Constants.ISTORAGE_FILE)]
 )
-class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
+internal class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
+  companion object {
+    fun getInstance(): JavaReturnHighlighterConfig =
+      ServiceManager.getService(JavaReturnHighlighterConfig::class.java)
+  }
+
   private var state = JavaConfig()
   private var highlightStrategy: ReturnHighlightStrategy<PsiKeyword> = JavaAlwaysHighlightStrategy
 
@@ -47,12 +52,6 @@ class JavaReturnHighlighterConfig : PersistentStateComponent<JavaConfig> {
     }
 
     this.highlightStrategy = highlightStrategy
-  }
-
-  companion object {
-    val INSTANCE: JavaReturnHighlighterConfig by lazy {
-      ApplicationManager.getApplication().getComponent(JavaReturnHighlighterConfig::class.java)
-    }
   }
 
   data class JavaConfig(

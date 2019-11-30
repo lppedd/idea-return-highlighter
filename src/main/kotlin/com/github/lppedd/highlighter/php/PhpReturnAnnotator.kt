@@ -6,8 +6,8 @@ import com.github.lppedd.highlighter.AbstractReturnAnnotator as ARA
 /**
  * @author Edoardo Luppi
  */
-class PhpReturnAnnotator : ARA<PhpReturn>(PhpReturn::class.java) {
-  private val config = PhpReturnHighlighterConfig.INSTANCE
+internal class PhpReturnAnnotator : ARA<PhpReturn>(PhpReturn::class.java) {
+  private val config = PhpReturnHighlighterConfig.getInstance()
 
   override fun isValidContext(psiElement: PhpReturn) =
     config.getHighlightStrategy().isValidContext(psiElement)

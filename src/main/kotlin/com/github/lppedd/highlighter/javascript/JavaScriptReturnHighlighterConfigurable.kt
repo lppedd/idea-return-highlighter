@@ -8,8 +8,8 @@ import javax.swing.JComponent
 /**
  * @author Edoardo Luppi
  */
-class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
-  private val config = JavaScriptReturnHighlighterConfig.INSTANCE
+internal class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
+  private val config = JavaScriptReturnHighlighterConfig.getInstance()
   private val gui = JavaScriptReturnHighlighterConfigurableGui(ReturnHighlighterBundle)
 
   override fun getId() = "preferences.${Constants.IAPP_NAME}.JavaScript"
@@ -28,8 +28,8 @@ class JavaScriptReturnHighlighterConfigurable : SearchableConfigurable {
   }
 
   override fun isModified() =
-      gui.isOnlyTopLevelReturns != config.state.isOnlyTopLevelReturns
-          || gui.isSkipSimpleGetters != config.state.isSkipSimpleGetters
+    gui.isOnlyTopLevelReturns != config.state.isOnlyTopLevelReturns
+    || gui.isSkipSimpleGetters != config.state.isSkipSimpleGetters
 
   override fun createComponent(): JComponent? {
     gui.isOnlyTopLevelReturns = config.state.isOnlyTopLevelReturns

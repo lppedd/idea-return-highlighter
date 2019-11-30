@@ -1,12 +1,4 @@
 <idea-plugin>
-	<application-components>
-		<component>
-			<implementation-class>
-				com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig
-			</implementation-class>
-		</component>
-	</application-components>
-
 	<extensions defaultExtensionNs="com.intellij">
 		<codeInsight.lineMarkerProvider
 				language="PHP"
@@ -23,5 +15,6 @@
 				bundle="messages.ReturnHighlighterBundle"
 				instance="com.github.lppedd.highlighter.php.PhpReturnHighlighterConfigurable"
 		/>
+		<applicationService serviceImplementation="com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig" />
 	</extensions>
 </idea-plugin>

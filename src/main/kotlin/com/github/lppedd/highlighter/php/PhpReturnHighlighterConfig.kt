@@ -4,8 +4,8 @@ import com.github.lppedd.highlighter.Application
 import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.php.PhpReturnHighlighterConfig.PhpConfig
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.jetbrains.php.lang.psi.elements.PhpReturn
@@ -17,7 +17,12 @@ import com.jetbrains.php.lang.psi.elements.PhpReturn
     name = "PHP",
     storages = [Storage(Constants.ISTORAGE_FILE)]
 )
-class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
+internal class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
+  companion object {
+    fun getInstance(): PhpReturnHighlighterConfig =
+      ServiceManager.getService(PhpReturnHighlighterConfig::class.java)
+  }
+
   private var state = PhpConfig()
   private var highlightStrategy: ReturnHighlightStrategy<PhpReturn> = PhpAlwaysHighlightStrategy
 
@@ -44,12 +49,6 @@ class PhpReturnHighlighterConfig : PersistentStateComponent<PhpConfig> {
     }
 
     this.highlightStrategy = highlightStrategy
-  }
-
-  companion object {
-    val INSTANCE: PhpReturnHighlighterConfig by lazy {
-      ApplicationManager.getApplication().getComponent(PhpReturnHighlighterConfig::class.java)
-    }
   }
 
   data class PhpConfig(var isOnlyTopLevelReturns: Boolean = false)

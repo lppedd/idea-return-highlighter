@@ -8,8 +8,8 @@ import javax.swing.JComponent
 /**
  * @author Edoardo Luppi
  */
-class PhpReturnHighlighterConfigurable : SearchableConfigurable {
-  private val config = PhpReturnHighlighterConfig.INSTANCE
+internal class PhpReturnHighlighterConfigurable : SearchableConfigurable {
+  private val config = PhpReturnHighlighterConfig.getInstance()
   private val gui = PhpReturnHighlighterConfigurableGui(ReturnHighlighterBundle)
 
   override fun getId() = "preferences.${Constants.IAPP_NAME}.php"

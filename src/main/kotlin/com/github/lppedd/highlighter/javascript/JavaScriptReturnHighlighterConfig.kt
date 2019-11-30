@@ -5,8 +5,8 @@ import com.github.lppedd.highlighter.Constants
 import com.github.lppedd.highlighter.ReturnHighlightStrategy
 import com.github.lppedd.highlighter.javascript.JavaScriptReturnHighlighterConfig.JavaScriptConfig
 import com.intellij.lang.javascript.psi.JSReturnStatement
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 
@@ -17,7 +17,12 @@ import com.intellij.openapi.components.Storage
     name = "JavaScript",
     storages = [Storage(Constants.ISTORAGE_FILE)]
 )
-class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptConfig> {
+internal class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptConfig> {
+  companion object {
+    fun getInstance(): JavaScriptReturnHighlighterConfig =
+      ServiceManager.getService(JavaScriptReturnHighlighterConfig::class.java)
+  }
+
   private var state = JavaScriptConfig()
   private var highlightStrategy: ReturnHighlightStrategy<JSReturnStatement> = JavaScriptAlwaysHighlightStrategy
 
@@ -48,12 +53,6 @@ class JavaScriptReturnHighlighterConfig : PersistentStateComponent<JavaScriptCon
     }
 
     this.highlightStrategy = highlightStrategy
-  }
-
-  companion object {
-    val INSTANCE: JavaScriptReturnHighlighterConfig by lazy {
-      ApplicationManager.getApplication().getComponent(JavaScriptReturnHighlighterConfig::class.java)
-    }
   }
 
   data class JavaScriptConfig(
