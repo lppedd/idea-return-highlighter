@@ -2,9 +2,11 @@
 
 <img align="left" width="70" height="68" src="https://raw.githubusercontent.com/lppedd/idea-return-highlighter/master/images/return-highlighter-logo.png" alt="Plugin logo">
 
-# Return Highlighter ([@JetBrains Plugins Repository][1])
+# Return Highlighter
 
-<br>Looking for the latest **plugin binaries**? Get them [here][3] as `.zip`  
+### Available @ [JetBrains Plugins Repository][1]
+
+Looking for the latest **plugin binaries**? Get them [here][3] as `.zip`  
 <small>Supported IDE versions: `192.*` to `193.*` (both inclusive)</small> 
 
 #### Supported languages
