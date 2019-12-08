@@ -1,0 +1,20 @@
+<idea-plugin>
+  <extensions defaultExtensionNs="com.intellij">
+    <codeInsight.lineMarkerProvider
+        language="Python"
+        implementationClass="com.github.lppedd.highlighter.python.PythonReturnLineMarkerProvider"
+    />
+    <annotator
+        language="Python"
+        implementationClass="com.github.lppedd.highlighter.python.PythonReturnAnnotator"
+    />
+    <applicationConfigurable
+        parentId="preferences.ReturnHighlighter"
+        id="preferences.ReturnHighlighter.python"
+        key="rh.settings.python"
+        bundle="messages.ReturnHighlighterBundle"
+        instance="com.github.lppedd.highlighter.python.PythonReturnHighlighterConfigurable"
+    />
+    <applicationService serviceImplementation="com.github.lppedd.highlighter.python.PythonReturnHighlighterConfig" />
+  </extensions>
+</idea-plugin>

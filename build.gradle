@@ -30,7 +30,12 @@ compileTestKotlin {
 intellij {
     version 'IU-192.7142.36'
     downloadSources true
-    plugins = ['java', 'JavaScriptLanguage', 'com.jetbrains.php:192.7142.51']
+    plugins = [
+            'java',
+            'JavaScriptLanguage',
+            'Pythonid:2019.2.192.7142.36',
+            'com.jetbrains.php:192.7142.51'
+    ]
 }
 
 patchPluginXml {

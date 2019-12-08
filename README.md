@@ -11,7 +11,8 @@
 
  - Java
  - JavaScript and TypeScript
- - PHP (simple getters strategy is missing)
+ - Python
+ - PHP
  - Need another language? [Open an issue][2]
 
 -----
