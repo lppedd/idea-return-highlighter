@@ -41,7 +41,7 @@ intellij {
 patchPluginXml {
     version project.version
     sinceBuild '192'
-    untilBuild '193.*'
+    untilBuild null
     pluginDescription = new File('plugin-description.html').getText('UTF-8')
     changeNotes = new File("change-notes/${version.replace('.', '_')}.html").getText('UTF-8')
 }
