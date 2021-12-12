@@ -11,7 +11,6 @@ import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.labels.LinkLabel
 import java.awt.Font
 import javax.swing.border.EmptyBorder
-import kotlin.test.assertNotNull
 
 /**
  * @author Edoardo Luppi
@@ -28,7 +27,7 @@ internal class ReturnHighlighterConfigurable : SearchableConfigurable {
     Configurable.APPLICATION_CONFIGURABLE.extensionList
         .filter { it.id?.startsWith("preferences.${Constants.IAPP_NAME}.") ?: false }
         .map {
-          val language = assertNotNull(it.id.split(".")[2])
+          val language = it.id.split(".")[2]
           val text = ReturnHighlighterBundle["rh.settings.$language"]
           LinkLabel.create(text, buildRunnable(it)).apply {
             alignmentX = 0f
