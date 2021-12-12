@@ -29,7 +29,7 @@ abstract class AbstractReturnAnnotator<in T : PsiElement>(private val klass: Cla
         && isValidContext(psiElement as T)
     ) {
       getPsiElement(psiElement)?.also {
-        holder.newAnnotation(HighlightSeverity.INFORMATION, "")
+        holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
             .enforcedTextAttributes(returnKeywordAttributes)
             .range(it)
             .create()
