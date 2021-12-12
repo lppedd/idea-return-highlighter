@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.github.lppedd"
-version = "0.8.1"
+version = "0.8.2"
 
 repositories {
   mavenCentral()
@@ -53,7 +53,7 @@ tasks {
   patchPluginXml {
     version.set(project.version.toString())
     sinceBuild.set("201.6668")
-    untilBuild.set(null as String?)
+    untilBuild.set("")
 
     val projectPath = projectDir.path
     pluginDescription.set((File("$projectPath/plugin-description.html").readText(Charsets.UTF_8)))
