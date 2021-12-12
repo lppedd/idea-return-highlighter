@@ -62,7 +62,7 @@ internal object JavaScriptTopLevelHighlightStrategy : TopLevelReturnHighlightStr
     // A return statement is valid inside a Function which is a direct
     // child of a Class, or a Module (file).
     val parent: PsiElement? = psiElement.parent
-    val isParentValid = parent is JSClass<*> || parent is JSFile
+    val isParentValid = parent is JSClass || parent is JSFile
     return if (isParentValid) VALID else INVALID
   }
 }
