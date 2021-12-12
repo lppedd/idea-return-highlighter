@@ -7,7 +7,7 @@
 ### Available @ [JetBrains Plugins Repository][1]
 
 Looking for the latest **plugin binaries**? Get them [here][3] as `.zip`  
-<small>Supported IDE versions: `192.*` to `193.*` (both inclusive)</small> 
+<small>Supported IDE versions: `201.6668` to `*`</small> 
 
 #### Supported languages
 
