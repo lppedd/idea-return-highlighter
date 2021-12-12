@@ -2,6 +2,7 @@ package com.github.lppedd.highlighter
 
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.PsiElement
@@ -28,9 +29,10 @@ abstract class AbstractReturnAnnotator<in T : PsiElement>(private val klass: Cla
         && isValidContext(psiElement as T)
     ) {
       getPsiElement(psiElement)?.also {
-        holder.createInfoAnnotation(it, null).run {
-          enforcedTextAttributes = returnKeywordAttributes
-        }
+        holder.newAnnotation(HighlightSeverity.INFORMATION, "")
+            .enforcedTextAttributes(returnKeywordAttributes)
+            .range(it)
+            .create()
       }
     }
   }
