@@ -1,5 +1,7 @@
 @file:Suppress("TrailingComma", "ConvertLambdaToReference")
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
   java
   id("org.jetbrains.intellij") version "1.3.0"
@@ -36,6 +38,18 @@ configure<JavaPluginExtension> {
 }
 
 tasks {
+  val kotlinSettings: KotlinCompile.() -> Unit = {
+    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-Xno-call-assertions",
+        "-Xno-receiver-assertions",
+        "-Xno-param-assertions",
+    )
+  }
+
+  compileKotlin(kotlinSettings)
+  compileTestKotlin(kotlinSettings)
+
   patchPluginXml {
     version.set(project.version.toString())
     sinceBuild.set("201.6668")
