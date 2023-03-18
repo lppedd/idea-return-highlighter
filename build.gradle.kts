@@ -4,8 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   java
-  id("org.jetbrains.intellij") version "1.3.0"
-  kotlin("jvm") version "1.6.0"
+  id("org.jetbrains.intellij") version "1.13.2"
+  kotlin("jvm") version "1.8.10"
 }
 
 group = "com.github.lppedd"
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-  implementation(kotlin("stdlib-jdk8"))
+  implementation(kotlin("stdlib"))
   testImplementation("junit:junit:4.13.2")
 }
 
@@ -38,6 +38,10 @@ configure<JavaPluginExtension> {
 }
 
 tasks {
+  wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+  }
+
   val kotlinSettings: KotlinCompile.() -> Unit = {
     kotlinOptions.jvmTarget = "1.8"
     kotlinOptions.freeCompilerArgs += listOf(
