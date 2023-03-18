@@ -23,7 +23,7 @@ dependencies {
 intellij {
   version.set("IU-201.6668.113")
   downloadSources.set(true)
-  pluginName.set("idea-conventional-commit")
+  pluginName.set("idea-return-highlighter")
   plugins.set(listOf(
       "java",
       "JavaScriptLanguage",
